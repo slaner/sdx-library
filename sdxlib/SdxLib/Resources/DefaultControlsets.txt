@@ -1,0 +1,20 @@
+<controlsettings name="Default" author="Sdx DevTeam">
+	<controlset action="move_left" key="leftarrow" />
+	<controlset action="move_right" key="rightarrow" />
+	<controlset action="move_up" key="uparrow" />
+	<controlset action="move_down" key="downarrow" />
+	<controlset action="jump" key="space" />
+	<controlset action="sprint" key="leftshift" />
+	<controlset action="fly" key="f" />
+	<controlset action="menu" key="escape" />
+	<controlset action="exit" key="q" />
+	<controlset action="pause" key="p" />
+	<controlset action="attack1" key="a" />
+	<controlset action="attack2" key="s" />
+	<controlset action="attack3" key="d" />
+	<controlset action="attack4" key="f" />
+	<controlset action="skill1" key="z" />
+	<controlset action="skill2" key="x" />
+	<controlset action="skill3" key="c" />
+	<controlset action="skill4" key="v" />
+</controlsettings>

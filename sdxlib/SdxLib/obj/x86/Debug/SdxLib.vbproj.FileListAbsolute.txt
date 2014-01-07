@@ -1,0 +1,10 @@
+C:\Users\hWang\Desktop\SdxLib\SdxLib\bin\x86\Debug\SdxLib.dll
+C:\Users\hWang\Desktop\SdxLib\SdxLib\bin\x86\Debug\SdxLib.pdb
+C:\Users\hWang\Desktop\SdxLib\SdxLib\bin\x86\Debug\SdxLib.xml
+C:\Users\hWang\Desktop\SdxLib\SdxLib\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\hWang\Desktop\SdxLib\SdxLib\obj\x86\Debug\SdxLib.Resources.resources
+C:\Users\hWang\Desktop\SdxLib\SdxLib\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\hWang\Desktop\SdxLib\SdxLib\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\hWang\Desktop\SdxLib\SdxLib\obj\x86\Debug\SdxLib.dll
+C:\Users\hWang\Desktop\SdxLib\SdxLib\obj\x86\Debug\SdxLib.xml
+C:\Users\hWang\Desktop\SdxLib\SdxLib\obj\x86\Debug\SdxLib.pdb

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SdxLib.SdxSprite2D" Collapsed="true">
+    <Position X="8" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAUAACAAAAAoAAAQIABAABAAAAiAACQEIAAAAAAAA=</HashCode>
+      <FileName>Objects\SdxSprite.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SdxLib.SdxGraphicsObject" Collapsed="true">
+    <Position X="6.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAECAAAAAA=</HashCode>
+      <FileName>Objects\GraphicObjects.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SdxLib.SdxFont" Collapsed="true">
+    <Position X="8" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SdxFont.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SdxLib.SdxHelper" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SdxHelper.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SdxLib.SdxMain" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAgAAAAAIggAgAACBAAAAMIAACCAACAI=</HashCode>
+      <FileName>SdxMain.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,187 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+SdxLib
+</name>
+</assembly>
+<members>
+<member name="M:SdxLib.Main.#ctor(System.Windows.Forms.Control)">
+	<summary>
+ DirectX 개체를 초기화합니다.
+ </summary>
+	<param name="Window">그래픽이 출력될 대상 윈도우를 입력합니다.</param>
+</member><member name="M:SdxLib.Main.#ctor(System.Windows.Forms.Form,System.Boolean)">
+	<summary>
+ DirectX 개체를 초기화합니다.
+ </summary>
+	<param name="Window">그래픽이 출력될 대상 윈도우를 입력합니다.</param>
+	<param name="FullScreen">전체 화면으로 표시하려는 경우, 이 값을 True 로 입력합니다.</param>
+</member><member name="M:SdxLib.Main.#ctor(System.Windows.Forms.Form,Microsoft.DirectX.Direct3D.PresentParameters)">
+	<summary>
+ DirectX 개체를 초기화합니다.
+ </summary>
+	<param name="Window">그래픽이 출력될 대상 윈도우를 입력합니다.</param>
+	<param name="PresentParameter">만들어질 DirectX 장치의 옵션을 결정하는 PresentParameters 개체를 입력합니다.</param>
+</member><member name="M:SdxLib.Main.Run">
+	<summary>
+ 그리기를 시작합니다.
+ </summary>
+</member><member name="M:SdxLib.Main.RunOnce">
+	<summary>
+ 한 프레임을 그립니다.
+ 만약 Run 메서드를 사용하여 그리기를 진행중인 경우,
+ RunOnce 메서드에 의한 그리기가 끝나는 즉시 Run 메서드에 의해 시작된 그리기는 중단됩니다.
+ </summary>
+</member><member name="M:SdxLib.Main.Stop">
+	<summary>
+ 프레임 그리기를 중단합니다.
+ </summary>
+</member><member name="M:SdxLib.Main.CreateSdxSprite2DFromBitmap(System.Drawing.Bitmap)">
+	<summary>
+ 비트맵으로부터 2D 스프라이트를 만듭니다.
+ </summary>
+	<param name="Bmp">2D 스프라이트를 만들 비트맵을 입력합니다.</param>
+</member><member name="M:SdxLib.Main.CreateSdxSprite2DFromImage(System.Drawing.Image,System.Drawing.Imaging.ImageFormat)">
+	<summary>
+ 이미지로부터 2D 스프라이트를 만듭니다.
+ </summary>
+	<param name="Img">2D 스프라이트를 만들 이미지를 입력합니다.</param>
+	<param name="ImgFormat">2D 스프라이트를 만들 이미지의 형식을 입력합니다.</param>
+</member><member name="M:SdxLib.Main.RenderProc">
+	<summary>
+ 그리기 작업을 하는 쓰레드 호출 함수입니다.
+ </summary>
+</member><member name="M:SdxLib.Main.Draw">
+	<summary>
+ 프레임을 그립니다.
+ </summary>
+</member><member name="M:SdxLib.Main.IsWinForm(System.Object)">
+	<summary>
+ 주어진 개체가 윈도우가 맞는지 아닌지 확인합니다.
+ </summary>
+	<param name="Object">확인할 개체를 입력합니다.</param>
+</member><member name="M:SdxLib.Main.createDefaultPresentParameters(System.Windows.Forms.Control,System.Boolean)">
+	<summary>
+ 기본 설정의 PresentParameters 개체를 만듭니다.
+ </summary>
+	<param name="Window">PresentParameters 개체를 만드는데 필요한 정보를 가져올 때 사용할 윈도우를 입력합니다.</param>
+	<param name="FullScreen">전체 화면으로 표시하려는 경우, 이 값을 True 로 입력합니다.</param>
+</member><member name="M:SdxLib.SdxHelper.ImageToStream(System.Drawing.Image,System.Drawing.Imaging.ImageFormat)">
+	<summary>
+ 이미지를 스트림으로 변환합니다.
+ </summary>
+	<param name="Img">변환할 이미지를 입력합니다.</param>
+	<param name="ImgFormat">변환할 이미지의 형식을 입력합니다.</param>
+</member><member name="M:SdxLib.SdxFont.#ctor(Microsoft.DirectX.Direct3D.Device)">
+	<summary>
+ 폰트 개체를 초기화합니다.
+ </summary>
+	<param name="Device">주 DirectX 장치를 입력합니다.</param>
+</member><member name="F:SdxLib.SdxGraphicsObject.m_Device">
+	<summary>
+ DirectX 장치를 저장합니다.
+ </summary>
+</member><member name="M:SdxLib.SdxGraphicsObject.#ctor(Microsoft.DirectX.Direct3D.Device)">
+	<summary>
+ 그래픽 개체를 초기화합니다.
+ </summary>
+	<param name="Device">주 DirectX 장치를 입력합니다.</param>
+</member><member name="P:SdxLib.SdxGraphicsObject.GraphicsDevice">
+	<summary>
+ DirectX 장치를 가져옵니다.
+ </summary>
+</member><member name="M:SdxLib.SdxSprite2D.#ctor(Microsoft.DirectX.Direct3D.Device,System.Drawing.Image,System.Drawing.Imaging.ImageFormat)">
+	<summary>
+ 스프라이트 개체를 초기화합니다.
+ </summary>
+	<param name="Device">주 DirectX 장치를 입력합니다.</param>
+	<param name="Img">텍스쳐로 사용할 이미지를 입력합니다.</param>
+	<param name="ImgFormat">텍스쳐로 사용할 이미지의 형식을 입력합니다.</param>
+</member><member name="M:SdxLib.SdxSprite2D.#ctor(Microsoft.DirectX.Direct3D.Device,System.Drawing.Bitmap)">
+	<summary>
+ 스프라이트 개체를 초기화합니다.
+ </summary>
+	<param name="Device">주 DirectX 장치를 입력합니다.</param>
+	<param name="Bmp">텍스쳐로 사용할 비트맵 이미지를 입력합니다.</param>
+</member><member name="F:SdxLib.SdxSprite2D.g_Location">
+	<summary>
+ 스프라이트의 위치를 저장합니다.
+ </summary>
+</member><member name="F:SdxLib.SdxSprite2D.g_Texture">
+	<summary>
+ 스프라이트의 텍스쳐를 저장합니다.
+ </summary>
+</member><member name="F:SdxLib.SdxSprite2D.g_Speed">
+	<summary>
+ 스프라이트의 이동 속도를 저장합니다.
+ </summary>
+</member><member name="F:SdxLib.SdxSprite2D.g_Angle">
+	<summary>
+ 스프라이트의 각도를 저장합니다.
+ </summary>
+</member><member name="F:SdxLib.SdxSprite2D.g_Size">
+	<summary>
+ 스프라이트의 크기를 저장합니다.
+ </summary>
+</member><member name="F:SdxLib.SdxSprite2D.g_Center">
+	<summary>
+ 스프라이트의 회전 중심 축을 저장합니다.
+ </summary>
+</member><member name="F:SdxLib.SdxSprite2D.g_Opacity">
+	<summary>
+ 스프라이트의 투명도를 저장합니다.
+ </summary>
+</member><member name="F:SdxLib.SdxSprite2D.g_ColorKey">
+	<summary>
+ 스프라이트의 컬러 키(투명 색)을 저장합니다.
+ </summary>
+</member><member name="P:SdxLib.SdxSprite2D.Angle">
+	<summary>
+ 스프라이트의 각도를 가져오거나 설정합니다. (Degree)
+ </summary>
+</member><member name="P:SdxLib.SdxSprite2D.Speed">
+	<summary>
+ 스프라이트의 이동 속도를 가져오거나 설정합니다.
+ </summary>
+</member><member name="P:SdxLib.SdxSprite2D.Location">
+	<summary>
+ 스프라이트의 위치를 가져오거나 설정합니다.
+ </summary>
+</member><member name="P:SdxLib.SdxSprite2D.RotateOrigin">
+	<summary>
+ 스프라이트의 회전 중심 축을 가져오거나 설정합니다.
+ </summary>
+</member><member name="P:SdxLib.SdxSprite2D.Opacity">
+	<summary>
+ 스프라이트의 투명도를 가져오거나 설정합니다.
+ </summary>
+</member><member name="P:SdxLib.SdxSprite2D.ColorKey">
+	<summary>
+ 스프라이트의 컬러 키(투명 색)를 가져오거나 설정합니다.
+ </summary>
+</member><member name="P:SdxLib.SdxSprite2D.Texture">
+	<summary>
+ 스프라이트의 텍스쳐를 가져옵니다.
+ </summary>
+</member><member name="M:SdxLib.SdxSprite2D.Draw(Microsoft.DirectX.Direct3D.Sprite)">
+	<summary>
+ 텍스쳐를 그립니다.
+ </summary>
+	<param name="Target">텍스쳐가 그려질 스프라이트 개체를 입력합니다.</param>
+</member><member name="P:SdxLib.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:SdxLib.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:SdxLib.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+</members>
+</doc>

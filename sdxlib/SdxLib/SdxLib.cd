@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SdxLib.SdxGraphicsObject" Collapsed="true">
+    <Position X="2.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAECAAAAAA=</HashCode>
+      <FileName>Objects\Deprecated\GraphicObjects.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SdxLib.SdxBitmapText" Collapsed="true">
+    <Position X="2.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQAEQB2AqAgBABCACIIxAaMAICgEAECAAAUCAvCYIA=</HashCode>
+      <FileName>Objects\Deprecated\SdxBitmapText.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SdxLib.SdxText" Collapsed="true">
+    <Position X="5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEQAgICAAAgAAACIARJCIAAggAAASAAAEGAACYAA=</HashCode>
+      <FileName>Objects\Deprecated\SdxText.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SdxLib.SdxTileset2D" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAUAAABCAAgAAAAAIAQEAAAAAgCAAAAAIAgAACYAA=</HashCode>
+      <FileName>Objects\Deprecated\SdxTileset2D.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SdxLib.SdxBlock2D" Collapsed="true">
+    <Position X="3.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAVAAABKQAgiAIMCYAREAAAAAgSAACYEMA6AACZAA=</HashCode>
+      <FileName>Objects\SdxBlock2D\Constructor\ctor.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SdxLib.SdxBullet" Collapsed="true">
+    <Position X="14.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAUADABCAAggAAAAJgQEABAQAgiAACIAIAgAASYEA=</HashCode>
+      <FileName>Objects\SdxBullet\Constructor\ctor.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SdxLib.SdxCar2D" Collapsed="true">
+    <Position X="21.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\SdxCar2D\SdxCar2D.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SdxLib.SdxFont" Collapsed="true">
+    <Position X="16.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAgEICAAAAAAACAAQAAQAAAAAAAgAAAAAgAAAIA=</HashCode>
+      <FileName>Objects\SdxFont\Constructor\ctor.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SdxLib.SdxLine2D" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAQSACAiQBSiCACCAEBBQAAAAACACACAUAggACAAA=</HashCode>
+      <FileName>Objects\SdxLine2D\Constructor\ctor.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SdxLib.SdxMenu" Collapsed="true">
+    <Position X="19" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgBAAAAACCCAAAAACAICAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\SdxMenu\SdxMenu.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SdxLib.SdxObject" Collapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Objects\SdxObject\Constructor\ctor.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SdxLib.SdxPlayer" Collapsed="true">
+    <Position X="7.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ZAAAWEjABGBggoAAAQIARlAJIAFgj4GidFYEgAOOYEQ=</HashCode>
+      <FileName>Objects\SdxPlayer\Constructor\ctor.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SdxLib.SdxMarioTypePlayer" Collapsed="true">
+    <Position X="5.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAoAAKEQAAAQAACAAAAAABgQAAAAAABAQAAAAA=</HashCode>
+      <FileName>Objects\SdxPlayer\Player Types\SdxMarioTypePlayer\Method\Renderer.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SdxLib.SdxPacManTypePlayer" Collapsed="true">
+    <Position X="7.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAA=</HashCode>
+      <FileName>Objects\SdxPlayer\Player Types\SdxPacManTypePlayer\Method\Renderer.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SdxLib.SdxRacingTypePlayer" Collapsed="true">
+    <Position X="10" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAASAwAAAAAAAAAAAAAQAAAAAIAqBCEAABAAAAECAAA=</HashCode>
+      <FileName>Objects\SdxPlayer\Player Types\SdxRacingTypePlayer\Method\Actions.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SdxLib.PlayerControlSettings" Collapsed="true">
+    <Position X="25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAEhABpIAwAABIAEAAAIAEAAAAAIACAIYAABQAAAAAA=</HashCode>
+      <FileName>Objects\SdxPlayer\PlayerControlSettings\PlayerControlSettings.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SdxLib.PlayerItem" Collapsed="true">
+    <Position X="26.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACACAAAAAAAQAAAEEAAAAAAAACAAAEAAAAAAAAEA=</HashCode>
+      <FileName>Objects\SdxPlayer\PlayerItem\PlayerItem.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SdxLib.SdxSharedResource" Collapsed="true">
+    <Position X="1" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAgCCAAAAAAAAAAAAAACQAAAAAAAAAAAgIAAAA=</HashCode>
+      <FileName>Objects\SdxSharedResource\SdxSharedResource.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SdxLib.SdxTextureLine" Collapsed="true">
+    <Position X="12.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAQAACAiQBWyAAGCAEBBQABAAACACBCEUAggACAQA=</HashCode>
+      <FileName>Objects\SdxTextureLine\Constructor\ctor.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SdxLib.SdxHelper" Collapsed="true">
+    <Position X="23.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAiBABAAAAAAAAAIAMkQCAQADAIAAAAAAA=</HashCode>
+      <FileName>SdxHelper.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SdxLib.SdxMain" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GSEehJyEADsQE0F+gQALBpAQHAmiDTAGMrGgmBiDGgI=</HashCode>
+      <FileName>SdxMain\Constructor\ctor.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SdxLib.ExtendList(Of T)" Collapsed="true">
+    <Position X="21.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Types\Classes\ExtendList.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SdxLib.My.MySettings" Collapsed="true">
+    <Position X="23.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="SdxLib.IAlphaMapSupportedGraphicsResource" Collapsed="true">
+    <Position X="21.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IAlphaMapSupportedGraphicsResource.vb</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SdxLib.IGraphicsLine" Collapsed="true">
+    <Position X="23.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAQAAAACQBAgAAAAAAAAAAAAAAAACACAUAgAACAAA=</HashCode>
+      <FileName>Interfaces\IGraphicsLine.vb</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SdxLib.IGraphicsResource" Collapsed="true">
+    <Position X="25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAABCAAgAAAAAIAQEAAAAAgAAAAAAIAgAACYAA=</HashCode>
+      <FileName>Interfaces\IGraphicsResource.vb</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SdxLib.IGraphicsText" Collapsed="true">
+    <Position X="26.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEQAgAAAAAgAAAAIAAAAAAAAAAAAAAAAACAAAYAA=</HashCode>
+      <FileName>Interfaces\IGraphicsText.vb</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="SdxLib.ImageLayout" Collapsed="true">
+    <Position X="25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Types\Enumerations\BackgroundImageLayout.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SdxLib.CharacterSet" Collapsed="true">
+    <Position X="21.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAQAAAJCABEACAEAAICAQIBAAAAAAAIAAEAIAiAA=</HashCode>
+      <FileName>Types\Enumerations\CharacterSet.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SdxLib.FadeEffect" Collapsed="true">
+    <Position X="23.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Enumerations\FadeEffect.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SdxLib.FadeType" Collapsed="true">
+    <Position X="25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAAAEAAAAAAAEAAAA=</HashCode>
+      <FileName>Types\Enumerations\FadeType.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SdxLib.FontQuality" Collapsed="true">
+    <Position X="26.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAIAAEEAAAIAAIAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Enumerations\FontQuality.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SdxLib.FontWeight" Collapsed="true">
+    <Position X="21.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEEAAAAAAAACCKAAQBAAgQAGAAIAAAAAAQAAAAEAAA=</HashCode>
+      <FileName>Types\Enumerations\FontWeight.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SdxLib.GameMode" Collapsed="true">
+    <Position X="23.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types\Enumerations\GameMode.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SdxLib.Keys" Collapsed="true">
+    <Position X="26.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>F8qq8X9YAaIwSEAYiaELCCgXCqWQHCobLAKkv///Z1M=</HashCode>
+      <FileName>Types\Enumerations\Keys.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SdxLib.OutputPrecision" Collapsed="true">
+    <Position X="21.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgABQQABIAAAACwAAAEAAAAAAAAACAA=</HashCode>
+      <FileName>Types\Enumerations\OutputPrecision.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SdxLib.PitchAndFamily" Collapsed="true">
+    <Position X="23.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAgAEAAAAAAAAAAIAIAAAAAAAACIABAAAAAACAAAAA=</HashCode>
+      <FileName>Types\Enumerations\PitchAndFamily.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SdxLib.ResourceTypes" Collapsed="true">
+    <Position X="25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAQAAAAA=</HashCode>
+      <FileName>Types\Enumerations\ResourceTypes.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Module Name="SdxLib.My.Resources.Resources" Collapsed="true">
+    <Position X="23.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAABEABAAQAAAAgEAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="SdxLib.My.MySettingsProperty" Collapsed="true">
+    <Position X="21.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Module>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

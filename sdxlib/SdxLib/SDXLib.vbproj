@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{BDCE35B4-E644-4732-8E9E-6193A2C0D106}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SDXLib</RootNamespace>
+    <AssemblyName>SDXLibrary</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>SDXLibrary.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>SDXLibrary.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DocumentationFile>SDXLibrary.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\SdxLib.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;c:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;c:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DocumentationFile>SDXLibrary.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\SdxLib.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;c:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;c:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.DirectX, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2902.0\Microsoft.DirectX.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.DirectX.Diagnostics, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2902.0\Microsoft.DirectX.Diagnostics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.DirectX.Direct3D, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2902.0\Microsoft.DirectX.Direct3D.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.DirectX.Direct3DX, Version=1.0.2910.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2911.0\Microsoft.DirectX.Direct3DX.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.DirectX.DirectDraw, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2902.0\Microsoft.DirectX.DirectDraw.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.DirectX.DirectInput, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2902.0\Microsoft.DirectX.DirectInput.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Diagnostics" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\SDXControl\Constructor\ctor.vb" />
+    <Compile Include="Controls\SDXControl\Controls\SDXTextBox\Constructor\ctor.vb" />
+    <Compile Include="Controls\SDXControl\Controls\SDXTextBox\Event\Changed.vb" />
+    <Compile Include="Controls\SDXControl\Controls\SDXTextBox\Method\MsgHandler.vb" />
+    <Compile Include="Controls\SDXControl\Controls\SDXTextBox\Method\Renderer.vb" />
+    <Compile Include="Controls\SDXControl\Controls\SDXTextBox\Method\TextBoxFunction.vb" />
+    <Compile Include="Controls\SDXControl\Controls\SDXTextBox\Property\prop.vb" />
+    <Compile Include="Controls\SDXControl\Method\MessageHandler.vb" />
+    <Compile Include="Controls\SDXControl\Method\method.vb" />
+    <Compile Include="Controls\SDXControl\Property\InternalAccessProp.vb" />
+    <Compile Include="Controls\SDXControl\Property\prop.vb" />
+    <Compile Include="Controls\SDXControl\SDXControl.vb" />
+    <Compile Include="Controls\SDXControl\Controls\SDXTextBox\SDXTextBox.vb" />
+    <Compile Include="Devices\SDXMouse\Constructor\ctor.vb" />
+    <Compile Include="Devices\SDXMouse\Method\InternalMethod.vb" />
+    <Compile Include="Devices\SDXMouse\Method\Method.vb" />
+    <Compile Include="Devices\SDXMouse\Property\prop.vb" />
+    <Compile Include="Devices\SDXMouse\SDXMouse.vb" />
+    <Compile Include="Interfaces\IAlphaMapSupportedGraphicsResource.vb" />
+    <Compile Include="Interfaces\IGraphicsDisposable.vb" />
+    <Compile Include="Interfaces\IGraphicsEffect.vb" />
+    <Compile Include="Interfaces\IGraphicsLine.vb" />
+    <Compile Include="Interfaces\IGraphicsResource.vb" />
+    <Compile Include="Interfaces\IGraphicsText.vb" />
+    <Compile Include="Objects\RTS\Equipments\UnitEquipments.vb" />
+    <Compile Include="Objects\RTS\SdxUnit\SdxUnit.vb" />
+    <Compile Include="Objects\SdxBlock2D\Constructor\ctor.vb" />
+    <Compile Include="Objects\SdxBlock2D\Method\Action.vb" />
+    <Compile Include="Objects\SdxBlock2D\Method\Renderer.vb" />
+    <Compile Include="Objects\SdxBlock2D\Property\prop.vb" />
+    <Compile Include="Objects\SdxBlock2D\SdxBlock2D.vb" />
+    <Compile Include="Objects\SdxBullet\Constructor\ctor.vb" />
+    <Compile Include="Objects\SdxBullet\Method\method.vb" />
+    <Compile Include="Objects\SdxBullet\Property\prop.vb" />
+    <Compile Include="Objects\SdxBullet\SdxBullet.vb" />
+    <Compile Include="Objects\SdxEffect\Constructor\ctor.vb" />
+    <Compile Include="Objects\SdxEffect\Effect Types\SdxExplosion\Constructor\ctor.vb" />
+    <Compile Include="Objects\SdxEffect\Effect Types\SdxExplosion\Method\InternalMethod.vb" />
+    <Compile Include="Objects\SdxEffect\Effect Types\SdxExplosion\Method\Renderer.vb" />
+    <Compile Include="Objects\SdxEffect\Effect Types\SdxExplosion\Property\prop.vb" />
+    <Compile Include="Objects\SdxEffect\Effect Types\SdxExplosion\SdxExplosion.vb" />
+    <Compile Include="Objects\SdxEffect\Effect Types\SdxMissile\Constructor\ctor.vb" />
+    <Compile Include="Objects\SdxEffect\Effect Types\SdxMissile\Method\Renderer.vb" />
+    <Compile Include="Objects\SdxEffect\Effect Types\SdxMissile\Property\prop.vb" />
+    <Compile Include="Objects\SdxEffect\Effect Types\SdxMissile\SdxMissile.vb" />
+    <Compile Include="Objects\SdxEffect\Method\InternalMethod.vb" />
+    <Compile Include="Objects\SdxEffect\Method\Renderer.vb" />
+    <Compile Include="Objects\SdxEffect\Property\prop.vb" />
+    <Compile Include="Objects\SdxEffect\SdxEffect.vb" />
+    <Compile Include="Objects\SdxFont\Constructor\ctor.vb" />
+    <Compile Include="Objects\SdxFont\Method\method.vb" />
+    <Compile Include="Objects\SdxFont\Property\prop.vb" />
+    <Compile Include="Objects\SdxFont\SdxFont.vb" />
+    <Compile Include="Objects\SdxLine2D\Constructor\ctor.vb" />
+    <Compile Include="Objects\SdxLine2D\Method\method.vb" />
+    <Compile Include="Objects\SdxLine2D\Property\prop.vb" />
+    <Compile Include="Objects\SdxMap\SdxMap.vb" />
+    <Compile Include="Objects\SdxPlayer\Method\InternalMethod.vb" />
+    <Compile Include="Objects\SdxPlayer\Player Types\SdxMarioTypePlayer\Constructor\ctor.vb" />
+    <Compile Include="Objects\SdxPlayer\Player Types\SdxMarioTypePlayer\Method\Action.vb" />
+    <Compile Include="Objects\SdxTextureLine\Constructor\ctor.vb" />
+    <Compile Include="Objects\SdxTextureLine\Method\Renderer.vb" />
+    <Compile Include="Objects\SdxTextureLine\Property\prop.vb" />
+    <Compile Include="Objects\SdxTextureLine\SdxTextureLine.vb" />
+    <Compile Include="Objects\SdxLine2D\SdxLine2D.vb" />
+    <Compile Include="Objects\SdxObject\Constructor\ctor.vb" />
+    <Compile Include="Objects\SdxObject\Property\prop.vb" />
+    <Compile Include="Objects\SdxObject\SdxObject.vb" />
+    <Compile Include="Objects\SdxPlayer\Constructor\ctor.vb" />
+    <Compile Include="Objects\SdxPlayer\Method\Actions.vb" />
+    <Compile Include="Objects\SdxPlayer\Method\Renderer.vb" />
+    <Compile Include="Objects\SdxPlayer\Player Types\SdxMarioTypePlayer\Method\Renderer.vb" />
+    <Compile Include="Objects\SdxPlayer\Player Types\SdxMarioTypePlayer\Property\prop.vb" />
+    <Compile Include="Objects\SdxPlayer\Player Types\SdxMarioTypePlayer\SdxMarioTypePlayer.vb" />
+    <Compile Include="Objects\SdxPlayer\Player Types\SdxPacManTypePlayer\Method\Renderer.vb" />
+    <Compile Include="Objects\SdxPlayer\Player Types\SdxPacManTypePlayer\SdxPacManTypePlayer.vb" />
+    <Compile Include="Objects\SdxPlayer\Player Types\SdxRacingTypePlayer\Method\Actions.vb" />
+    <Compile Include="Objects\SdxPlayer\Player Types\SdxRacingTypePlayer\Method\Renderer.vb" />
+    <Compile Include="Objects\SdxPlayer\Player Types\SdxRacingTypePlayer\Property\prop.vb" />
+    <Compile Include="Objects\SdxPlayer\Player Types\SdxRacingTypePlayer\SdxRacingTypePlayer.vb" />
+    <Compile Include="Objects\SdxPlayer\PlayerControlSettings\PlayerControlSettings.vb" />
+    <Compile Include="Objects\SdxPlayer\PlayerItem\PlayerItem.vb" />
+    <Compile Include="Objects\SdxPlayer\Property\prop.vb" />
+    <Compile Include="Objects\SdxPlayer\SdxPlayer.vb" />
+    <Compile Include="Objects\SdxSharedResource\SdxSharedResource.vb" />
+    <Compile Include="SDXMain\Event\Event.vb" />
+    <Compile Include="SDXMain\Method\InternalMethod.vb" />
+    <Compile Include="SDXMain\Method\Presentator.vb" />
+    <Compile Include="SDXMain\Method\RenderMethod.vb" />
+    <Compile Include="SDXMain\SDXMain.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SDXHelper.vb" />
+    <Compile Include="SDXMain\Constructor\ctor.vb" />
+    <Compile Include="SDXMain\Property\prop.vb" />
+    <Compile Include="SDXWindow\SDXWindow.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Types\Classes\ExtendList.vb" />
+    <Compile Include="Types\Enumerations\BackgroundImageLayout.vb" />
+    <Compile Include="Types\Enumerations\CharacterSet.vb" />
+    <Compile Include="Types\Enumerations\FadeEffect.vb" />
+    <Compile Include="Types\Enumerations\FadeType.vb" />
+    <Compile Include="Types\Enumerations\FontQuality.vb" />
+    <Compile Include="Types\Enumerations\FontWeight.vb" />
+    <Compile Include="Types\Enumerations\GameMode.vb" />
+    <Compile Include="Types\Enumerations\Keys.vb" />
+    <Compile Include="Types\Enumerations\MouseButton.vb" />
+    <Compile Include="Types\Enumerations\OutputPrecision.vb" />
+    <Compile Include="Types\Enumerations\PitchAndFamily.vb" />
+    <Compile Include="Types\Enumerations\ResourceTypes.vb" />
+    <Compile Include="Types\Enumerations\TextAlignment.vb" />
+    <Compile Include="Types\Structures\FontDescription.vb" />
+    <Compile Include="Types\Structures\Vector.vb" />
+    <Compile Include="WinAPI.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SdxLib.cd" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DefaultControlsets.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dot2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GreenLaser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GreenStripe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GreenStripe2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Laser8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Laser12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GreenBar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RedBar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Explosion64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\SDXControl\Event\" />
+    <Folder Include="Objects\Deprecated\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MIS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bullet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bullet_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WoodBlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IronBlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Road.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FillColorTexture.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ColorMask.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
