@@ -59,7 +59,7 @@ Namespace Controls
         ''' <summary>
         ''' 요소가 나타내는 제목을 저장합니다.
         ''' </summary>
-        Friend g_Text As String
+        Private g_Text As String
 
         ''' <summary>
         ''' 요소의 위치를 저장합니다.

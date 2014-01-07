@@ -60,7 +60,7 @@ Namespace Controls
             RaiseEvent TextChanged()
 
             m_iCaretPosition += 1
-            ScrollTextBox()
+            'ScrollTextBox()
             EnsureCaretVisible()
 
         End Sub
@@ -171,7 +171,7 @@ Namespace Controls
 
             If m_Buffer.Length = 0 Then Return New Point(Me.Left, Me.Top)
             Dim CPos As New Point(Me.Left, Me.Top)
-
+            CPos -= m_ScrollLocation
             CPos.X += SDXHelper.GetTextWidth(m_Font, MyBase.DotWidth, m_Buffer.ToString().Substring(0, m_iCaretPosition))
 
             Return CPos

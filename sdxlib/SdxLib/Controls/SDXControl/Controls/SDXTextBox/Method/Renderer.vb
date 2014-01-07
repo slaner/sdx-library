@@ -29,30 +29,8 @@ Namespace Controls
 
         Friend Overrides Sub DrawControlText(ByVal TextTarget As Microsoft.DirectX.Direct3D.Sprite)
 
-            ' Update a text
-            Dim tempText As String = m_Buffer.ToString(),
-                i As Int32 = 1,
-                Startat As Int32 = If(m_bGoingLeft, 1, m_Buffer.Length)
-
-            Do While SDXHelper.GetTextWidth(m_Font, MyBase.DotWidth, tempText) + m_ScrollLocation.X > Me.Width
-
-                If m_bGoingLeft Then                ' <<<
-
-                    Debug.Print(" <<<")
-                    tempText = tempText.Substring(0, tempText.Length - 1)
-
-                Else                                ' >>>
-
-                    Debug.Print(" >>>")
-                    tempText = Mid$(tempText, i)
-
-                End If
-                i += 1
-
-            Loop
-
-            g_Text = m_Buffer.ToString()
-            m_Font.DrawText(TextTarget, tempText, New Drawing.Rectangle(Me.Location, Me.Size), Me.TextAlign, Me.ForeColor)
+            Me.Text = m_Buffer.ToString()
+            m_Font.DrawText(TextTarget, Me.Text, New Drawing.Rectangle(Me.Location, Me.Size), Me.TextAlign, Me.ForeColor)
             m_CaretTick += 1
 
             If m_CaretTick >= g_CaretTick Then
