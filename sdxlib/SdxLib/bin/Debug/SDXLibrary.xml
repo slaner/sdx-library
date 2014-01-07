@@ -332,6 +332,10 @@ SDXLibrary
  선을 그립니다.
  </summary>
 	<param name="Target">선을 그릴 대상 Line 개체를 입력합니다.</param>
+</member><member name="T:SDXLib.Controls.SDXTextBox.SelectionInfo">
+	<summary>
+ 선택 영역의 정보를 저장합니다.
+ </summary>
 </member><member name="F:SDXLib.Controls.SDXTextBox.m_Buffer">
 	<summary>
  텍스트박스의 내용을 저장합니다.
@@ -348,13 +352,9 @@ SDXLibrary
 	<summary>
  삽입 모드를 사용하고 있는지 여부를 저장합니다.
  </summary>
-</member><member name="F:SDXLib.Controls.SDXTextBox.g_SelectionStart">
+</member><member name="F:SDXLib.Controls.SDXTextBox.g_Selection">
 	<summary>
- 선택 영역이 시작되는 부분을 저장합니다.
- </summary>
-</member><member name="F:SDXLib.Controls.SDXTextBox.g_SelectionLength">
-	<summary>
- 선택 영역의 길이를 저장합니다.
+ 선택 영역을 저장합니다.
  </summary>
 </member><member name="F:SDXLib.Controls.SDXTextBox.m_ScrollLocation">
 	<summary>
@@ -632,6 +632,14 @@ SDXLibrary
 </member><member name="P:SDXLib.Controls.SDXTextBox.CaretTick">
 	<summary>
  캐럿이 사라지는 시간을 가져오거나 설정합니다.
+ </summary>
+</member><member name="P:SDXLib.Controls.SDXTextBox.SelectionStart">
+	<summary>
+ 선택 영역의 시작 부분을 가져오거나 설정합니다.
+ </summary>
+</member><member name="P:SDXLib.Controls.SDXTextBox.SelectionLength">
+	<summary>
+ 선택 영역의 길이를 가져오거나 설정합니다.
  </summary>
 </member><member name="T:SDXLib.IGraphicsEffect">
 	<summary>

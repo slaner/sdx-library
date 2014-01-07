@@ -19,10 +19,10 @@ Namespace Controls
                     m_Buffer = DeleteSelectionText()
                     EnsureCaretVisible()
                 Else
-                    If g_SelectionStart > 0 Then
-                        Dim tSS As Int32 = g_SelectionStart
-                        g_SelectionStart -= 1
-                        MoveCaret(g_SelectionStart)
+                    If g_Selection.Start > 0 Then
+                        Dim tSS As Int32 = g_Selection.Start
+                        g_Selection.Start -= 1
+                        MoveCaret(g_Selection.Start)
                         m_Buffer = m_Buffer.Remove(tSS - 1, 1)
                         EnsureCaretVisible()
                     End If
@@ -44,27 +44,27 @@ Namespace Controls
 
                 If m_bGoingLeft Then
 
-                    If g_SelectionStart > 0 AndAlso g_SelectionStart + g_SelectionLength <= m_Buffer.Length Then
-                        SetSelection(g_SelectionStart - 1, g_SelectionLength + 1)
+                    If g_Selection.Start > 0 AndAlso g_Selection.Start + g_Selection.Length <= m_Buffer.Length Then
+                        SetSelection(g_Selection.Start - 1, g_Selection.Length + 1)
                     End If
 
                 Else
 
-                    If g_SelectionLength = 0 Then
+                    If g_Selection.Length = 0 Then
                         m_bGoingLeft = True
-                        If g_SelectionStart > 0 AndAlso g_SelectionStart + g_SelectionLength <= m_Buffer.Length Then
-                            SetSelection(g_SelectionStart - 1, g_SelectionLength + 1)
+                        If g_Selection.Start > 0 AndAlso g_Selection.Start + g_Selection.Length <= m_Buffer.Length Then
+                            SetSelection(g_Selection.Start - 1, g_Selection.Length + 1)
                         End If
                         Return
                     End If
 
-                    g_SelectionLength -= 1
+                    g_Selection.Length -= 1
 
                 End If
 
             Else
-                SetSelection(g_SelectionStart - 1, 0)
-                g_SelectionLength = 0
+                SetSelection(g_Selection.Start - 1, 0)
+                g_Selection.Length = 0
                 m_bGoingLeft = False
             End If
 
@@ -80,25 +80,25 @@ Namespace Controls
 
                 If m_bGoingLeft Then
 
-                    If g_SelectionStart >= 0 AndAlso g_SelectionStart + g_SelectionLength <= m_Buffer.Length Then
-                        SetSelection(g_SelectionStart + 1, g_SelectionLength - 1)
+                    If g_Selection.Start >= 0 AndAlso g_Selection.Start + g_Selection.Length <= m_Buffer.Length Then
+                        SetSelection(g_Selection.Start + 1, g_Selection.Length - 1)
                     End If
 
-                    If g_SelectionLength = 0 Then
+                    If g_Selection.Length = 0 Then
                         m_bGoingLeft = False
                         Return
                     End If
 
                 Else
 
-                    SetSelection(g_SelectionStart, g_SelectionLength + 1)
+                    SetSelection(g_Selection.Start, g_Selection.Length + 1)
 
                 End If
 
             Else
 
-                SetSelection(g_SelectionStart + 1, 0)
-                g_SelectionLength = 0
+                SetSelection(g_Selection.Start + 1, 0)
+                g_Selection.Length = 0
                 m_bGoingLeft = False
 
             End If
@@ -113,12 +113,12 @@ Namespace Controls
             MoveCaret(0)
 
             If m_bShifted Then
-                If g_SelectionStart = 0 Then
+                If g_Selection.Start = 0 Then
                     m_bGoingLeft = False
                 Else
                     m_bGoingLeft = True
                 End If
-                SetSelection(0, g_SelectionStart)
+                SetSelection(0, g_Selection.Start)
             Else
                 m_bGoingLeft = False
                 SetSelection(0, 0)
@@ -135,10 +135,10 @@ Namespace Controls
 
             If m_bShifted Then
                 If m_bGoingLeft Then
-                    SetSelection(g_SelectionStart + g_SelectionLength, m_Buffer.Length - (g_SelectionStart + g_SelectionLength))
+                    SetSelection(g_Selection.Start + g_Selection.Length, m_Buffer.Length - (g_Selection.Start + g_Selection.Length))
                     m_bGoingLeft = False
                 Else
-                    SetSelection(g_SelectionStart, m_Buffer.Length - g_SelectionStart)
+                    SetSelection(g_Selection.Start, m_Buffer.Length - g_Selection.Start)
                 End If
             Else
                 m_bGoingLeft = False
@@ -153,8 +153,8 @@ Namespace Controls
         Private Sub DeleteAction()
 
             m_bGoingLeft = False
-            If g_SelectionStart < m_Buffer.Length Then
-                m_Buffer = m_Buffer.Remove(g_SelectionStart, 1)
+            If g_Selection.Start < m_Buffer.Length Then
+                m_Buffer = m_Buffer.Remove(g_Selection.Start, 1)
             End If
 
         End Sub

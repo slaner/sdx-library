@@ -12,6 +12,16 @@ Namespace Controls
         Inherits Controls.SDXControl
 
         ''' <summary>
+        ''' 선택 영역의 정보를 저장합니다.
+        ''' </summary>
+        Public Structure SelectionInfo
+
+            Public Start As Int32
+            Public Length As Int32
+
+        End Structure
+
+        ''' <summary>
         ''' 텍스트박스의 내용을 저장합니다.
         ''' </summary>
         Private m_Buffer As New StringBuilder()
@@ -32,14 +42,9 @@ Namespace Controls
         Private g_InsertMode As Boolean = False
 
         ''' <summary>
-        ''' 선택 영역이 시작되는 부분을 저장합니다.
+        ''' 선택 영역을 저장합니다.
         ''' </summary>
-        Private g_SelectionStart As Int32 = 0
-
-        ''' <summary>
-        ''' 선택 영역의 길이를 저장합니다.
-        ''' </summary>
-        Private g_SelectionLength As Int32 = 0
+        Private g_Selection As SelectionInfo
 
         ''' <summary>
         ''' 스크롤 위치를 저장합니다.
@@ -49,6 +54,7 @@ Namespace Controls
         Private m_bGoingLeft As Boolean = False
 
 
+        Private m_iMaxDisplayableCharacters As Int32 = 0
         Private m_iCaretPosition As Int32 = 0
         Private m_iLastCaretPosition As Int32 = 0
         Private m_bComposingChar As Boolean = False

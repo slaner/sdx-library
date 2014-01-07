@@ -49,11 +49,11 @@ Namespace Controls
 
             ' 삽입 모드인 경우, 오른쪽에 있는 문자를 지운다
             If g_InsertMode Then
-                If g_SelectionStart < m_Buffer.Length Then m_Buffer = m_Buffer.Remove(g_SelectionStart, 1)
+                If g_Selection.Start < m_Buffer.Length Then m_Buffer = m_Buffer.Remove(g_Selection.Start, 1)
             End If
 
-            Dim tSS As Int32 = g_SelectionStart
-            g_SelectionStart += 1
+            Dim tSS As Int32 = g_Selection.Start
+            g_Selection.Start += 1
 
             ' 내용이 변경됬으므로, TextChanged 이벤트를 발생시킨다.
             m_Buffer.Insert(tSS, [Char])
@@ -70,17 +70,17 @@ Namespace Controls
         ''' </summary>
         Private Function DeleteSelectionText() As System.Text.StringBuilder
 
-            If g_SelectionLength = 0 Then Return m_Buffer
-            If g_SelectionStart >= m_Buffer.Length Then Return m_Buffer
-            If g_SelectionStart + g_SelectionLength > m_Buffer.Length Then Return m_Buffer
-            Dim tSL As Int32 = g_SelectionLength,
-                tSS As Int32 = g_SelectionStart
+            If g_Selection.Length = 0 Then Return m_Buffer
+            If g_Selection.Start >= m_Buffer.Length Then Return m_Buffer
+            If g_Selection.Start + g_Selection.Length > m_Buffer.Length Then Return m_Buffer
+            Dim tSL As Int32 = g_Selection.Length,
+                tSS As Int32 = g_Selection.Start
 
-            If g_SelectionStart < m_iCaretPosition Then
-                MoveCaret(g_SelectionStart)
-                g_SelectionStart = g_SelectionLength - (g_SelectionLength - g_SelectionStart)
+            If g_Selection.Start < m_iCaretPosition Then
+                MoveCaret(g_Selection.Start)
+                g_Selection.Start = g_Selection.Length - (g_Selection.Length - g_Selection.Start)
             End If
-            g_SelectionLength = 0
+            g_Selection.Length = 0
             Return RemoveSafeMethod(m_Buffer, tSS, tSL)
 
         End Function
@@ -90,8 +90,8 @@ Namespace Controls
         ''' </summary>
         Private Function HaveSelection() As Boolean
 
-            If g_SelectionLength = 0 Then Return False
-            If g_SelectionStart + g_SelectionLength > m_Buffer.Length Then Return False
+            If g_Selection.Length = 0 Then Return False
+            If g_Selection.Start + g_Selection.Length > m_Buffer.Length Then Return False
             Return True
 
         End Function
@@ -101,11 +101,11 @@ Namespace Controls
         ''' </summary>
         Private Function GetSelectionText() As String
 
-            If g_SelectionLength = 0 Then Return Nothing
-            If g_SelectionStart >= m_Buffer.Length Then Return Nothing
-            If g_SelectionStart + g_SelectionLength >= m_Buffer.Length Then Return Nothing
+            If g_Selection.Length = 0 Then Return Nothing
+            If g_Selection.Start >= m_Buffer.Length Then Return Nothing
+            If g_Selection.Start + g_Selection.Length >= m_Buffer.Length Then Return Nothing
 
-            Return m_Buffer.ToString().Substring(g_SelectionStart, g_SelectionLength)
+            Return m_Buffer.ToString().Substring(g_Selection.Start, g_Selection.Length)
 
         End Function
 
@@ -120,8 +120,8 @@ Namespace Controls
                 Return
             End If
 
-            g_SelectionStart = Start
-            g_SelectionLength = Length
+            g_Selection.Start = Start
+            g_Selection.Length = Length
 
         End Sub
 
@@ -135,9 +135,9 @@ Namespace Controls
             End If
 
             Dim cbText As String = Clipboard.GetText()
-            m_Buffer = m_Buffer.Insert(g_SelectionStart, cbText)
-            SetSelection(g_SelectionStart + cbText.Length, 0)
-            m_iCaretPosition = g_SelectionStart
+            m_Buffer = m_Buffer.Insert(g_Selection.Start, cbText)
+            SetSelection(g_Selection.Start + cbText.Length, 0)
+            m_iCaretPosition = g_Selection.Start
 
         End Sub
 
@@ -146,10 +146,10 @@ Namespace Controls
         ''' </summary>
         Private Function CopySelectionText() As Boolean
 
-            If g_SelectionLength = 0 Then Return False
+            If g_Selection.Length = 0 Then Return False
 
             Clipboard.Clear()
-            Clipboard.SetText(m_Buffer.ToString().Substring(g_SelectionStart, g_SelectionLength))
+            Clipboard.SetText(m_Buffer.ToString().Substring(g_Selection.Start, g_Selection.Length))
             Return True
 
         End Function
@@ -186,7 +186,7 @@ Namespace Controls
             If m_Buffer.Length = 0 Then Return New Point(Me.Left, Me.Top)
             Dim CPos As New Point(Me.Left, Me.Top)
 
-            CPos.X += SDXHelper.GetTextWidth(m_Font, MyBase.DotWidth, m_Buffer.ToString().Substring(0, g_SelectionStart))
+            CPos.X += SDXHelper.GetTextWidth(m_Font, MyBase.DotWidth, m_Buffer.ToString().Substring(0, g_Selection.Start))
 
             Return CPos
 
@@ -197,9 +197,9 @@ Namespace Controls
         ''' </summary>
         Private Function GetSelectionSize() As Size
 
-            If g_SelectionLength = 0 Then Return Size.Empty
+            If g_Selection.Length = 0 Then Return Size.Empty
             Return New Size(
-                            SDXHelper.GetTextWidth(m_Font, MyBase.DotWidth, m_Buffer.ToString().Substring(g_SelectionStart, g_SelectionLength)),
+                            SDXHelper.GetTextWidth(m_Font, MyBase.DotWidth, m_Buffer.ToString().Substring(g_Selection.Start, g_Selection.Length)),
                             MyBase.FontHeight)
 
         End Function
