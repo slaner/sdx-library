@@ -2,8 +2,12 @@
 Namespace Controls
     Partial Class SDXTextBox
 
-        Friend Overrides Sub DrawControl(ByVal Target As Microsoft.DirectX.Direct3D.Sprite)
+        Protected Friend Overrides Sub DrawControl(ByVal Target As Microsoft.DirectX.Direct3D.Sprite)
 
+            ' 경계선을 그린다.
+            Target.Draw2D(MyBase.Main.SharedResource.ColorMask, New Rectangle(0, 0, 1, 1), Me.Size, Me.Location, Color.Black)
+
+            ' 컨트롤 내부를 그린다.
             MyBase.DrawControl(Target)
 
             If Me.Focused AndAlso m_ShowCaret Then
@@ -25,7 +29,7 @@ Namespace Controls
 
         End Sub
 
-        Friend Overrides Sub DrawControlText(ByVal TextTarget As Microsoft.DirectX.Direct3D.Sprite)
+        Protected Friend Overrides Sub DrawControlText(ByVal TextTarget As Microsoft.DirectX.Direct3D.Sprite)
 
             Dim tmpText As String = m_Buffer.ToString()
             If tmpText.Length > m_iMaxDisplayableCharacters Then

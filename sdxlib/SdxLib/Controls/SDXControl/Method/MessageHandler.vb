@@ -2,6 +2,60 @@
 Namespace Controls
     Partial Class SDXControl
 
+        ' 내부 메세지 처리 함수
+        Private Sub ProcessMessageInternal(ByRef m As Windows.Forms.Message, ByRef ProcessAsDefault As Boolean, ByRef Handled As Boolean)
+
+            ' 비활성화 컨트롤에 대해선, 메세지를 통지받지 않는다.
+            If Not Me.Enabled Then Return
+
+            Select Case m.Msg
+                Case WinAPI.WindowsMessages.WM_MOUSEMOVE
+                    If g_DoNotProcessMouseMessages Then GoTo PassToHandler
+                    ProcessMouseMove(m)
+                    Handled = True
+                    Return
+
+                Case WinAPI.WindowsMessages.WM_LBUTTONDOWN, WinAPI.WindowsMessages.WM_LBUTTONUP, WinAPI.WindowsMessages.WM_LBUTTONDBLCLK
+                    If g_DoNotProcessMouseMessages Then GoTo PassToHandler
+                    ProcessMouseLeftButton(m)
+                    Handled = True
+                    Return
+
+                Case WinAPI.WindowsMessages.WM_MBUTTONDOWN, WinAPI.WindowsMessages.WM_MBUTTONUP, WinAPI.WindowsMessages.WM_MBUTTONDBLCLK
+                    If g_DoNotProcessMouseMessages Then GoTo PassToHandler
+                    ProcessMouseMiddleButton(m)
+                    Handled = True
+                    Return
+
+                Case WinAPI.WindowsMessages.WM_RBUTTONDOWN, WinAPI.WindowsMessages.WM_RBUTTONUP, WinAPI.WindowsMessages.WM_RBUTTONDBLCLK
+                    If g_DoNotProcessMouseMessages Then GoTo PassToHandler
+                    ProcessMouseRightButton(m)
+                    Handled = True
+                    Return
+
+                Case WinAPI.WindowsMessages.WM_KEYDOWN, WinAPI.WindowsMessages.WM_KEYUP
+                    If g_DoNotProcessKeyboardMessages Then GoTo PassToHandler
+                    If Not g_HaveFocus Then Return
+                    ProcessKeyboardEvents(m)
+                    Handled = True
+                    Return
+
+            End Select
+
+PassToHandler:
+            ProcessMessage(m, ProcessAsDefault, Handled)
+
+        End Sub
+
+        ''' <summary>
+        ''' 메세지를 처리합니다.
+        ''' </summary>
+        ''' <param name="m">받은 메세지를 입력합니다.</param>
+        ''' <param name="ProcessAsDefault">이 메세지를 WndProc 함수로 처리할 것인지 DefWndProc 함수로 처리할 것인지에 대한 여부를 입력합니다. (True의 경우, DefWndProc 함수로 처리합니다.)</param>
+        ''' <param name="Handled">이 메세지에 대해 추가적인 처리를 원치 않는 경우, 이 값을 True로 입력합니다.</param>
+        Protected Overridable Sub ProcessMessage(ByRef m As Windows.Forms.Message, ByRef ProcessAsDefault As Boolean, ByRef Handled As Boolean)
+        End Sub
+
         ''' <summary>
         ''' MouseLeave 이벤트를 발생시킵니다.
         ''' </summary>
@@ -11,8 +65,6 @@ Namespace Controls
             RaiseEvent MouseLeave()
 
         End Sub
-
-
 
         ''' <summary>
         ''' 마우스 이동에 대한 이벤트를 처리합니다.
