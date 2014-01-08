@@ -3,7 +3,7 @@
   <Class Name="SDXLib.Controls.SDXControl" Collapsed="true">
     <Position X="1.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IRBIFYAgJQJEwMFgE4oVhGnUBAEcGE0iCADIKYKLAkQ=</HashCode>
+      <HashCode>IRBIFYAgJQJEwMFgE4oVhGnUBAEcGE0iCADIKYKDAkQ=</HashCode>
       <FileName>Controls\SDXControl\Constructor\ctor.vb</FileName>
     </TypeIdentifier>
   </Class>
@@ -229,7 +229,7 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="SDXLib.IGraphicsDisposable" Collapsed="true">
-    <Position X="2.75" Y="4.5" Width="1.5" />
+    <Position X="1.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
       <FileName>Interfaces\IGraphicsDisposable.vb</FileName>
