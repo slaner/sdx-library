@@ -21,7 +21,11 @@ Namespace Controls
                 Return g_BackColor
             End Get
             Set(ByVal value As Color)
-                g_BackColor = value
+                If value <> g_BackColor Then
+                    Dim previousValue As Color = g_BackColor
+                    g_BackColor = value
+                    RaiseEvent BackColorChanged(previousValue, value)
+                End If
             End Set
         End Property
 
@@ -33,7 +37,11 @@ Namespace Controls
                 Return g_ForeColor
             End Get
             Set(ByVal value As Color)
-                g_ForeColor = value
+                If value <> g_ForeColor Then
+                    Dim previousValue As Color = g_ForeColor
+                    g_ForeColor = value
+                    RaiseEvent ForeColorChanged(previousValue, value)
+                End If
             End Set
         End Property
 
@@ -45,11 +53,15 @@ Namespace Controls
                 Return g_Font
             End Get
             Set(ByVal value As Drawing.Font)
-                g_Font = value
-                g_FontHeight = value.Height
-                m_Font = New D3.Font(MyBase.Main.Device, g_Font)
-                m_DotWidth = m_Font.MeasureString(Nothing, ".", 0, 0).Width
-                RaiseEvent FontChanged()
+                If Not g_Font.Equals(value) Then
+                    Dim previousValue As Font = g_Font
+                    g_Font = value
+                    g_FontHeight = value.Height
+                    If Not IsNothing(m_Font) Then m_Font.Dispose()
+                    m_Font = New D3.Font(MyBase.Main.Device, g_Font)
+                    m_DotWidth = m_Font.MeasureString(Nothing, ".", 0, 0).Width
+                    RaiseEvent FontChanged(previousValue, value)
+                End If
             End Set
         End Property
 
@@ -61,7 +73,11 @@ Namespace Controls
                 Return g_Text
             End Get
             Set(ByVal value As String)
-                g_Text = value
+                If value <> g_Text Then
+                    Dim previousValue As String = g_Text
+                    g_Text = value
+                    RaiseEvent TextChanged(previousValue, value)
+                End If
             End Set
         End Property
 
@@ -73,7 +89,11 @@ Namespace Controls
                 Return g_Opacity
             End Get
             Set(ByVal value As Byte)
-                g_Opacity = value
+                If value <> g_Opacity Then
+                    Dim previousValue As Byte = g_Opacity
+                    g_Opacity = value
+                    RaiseEvent OpacityChanged(previousValue, value)
+                End If
             End Set
         End Property
 
@@ -85,7 +105,11 @@ Namespace Controls
                 Return g_Location
             End Get
             Set(ByVal value As Point)
-                g_Location = value
+                If value <> g_Location Then
+                    Dim previousValue As Point = g_Location
+                    g_Location = value
+                    RaiseEvent LocationChanged(previousValue, value)
+                End If
             End Set
         End Property
 
@@ -97,7 +121,11 @@ Namespace Controls
                 Return g_Size
             End Get
             Set(ByVal value As Size)
-                g_Size = value
+                If value <> g_Size Then
+                    Dim previousValue As Point = g_Size
+                    g_Size = value
+                    RaiseEvent SizeChanged(previousValue, value)
+                End If
             End Set
         End Property
 
@@ -218,7 +246,11 @@ Namespace Controls
                 Return g_Enabled
             End Get
             Set(ByVal value As Boolean)
-                g_Enabled = value
+                If value <> g_Enabled Then
+                    Dim previousValue As Boolean = g_Enabled
+                    g_Enabled = value
+                    RaiseEvent EnabledChanged(previousValue, value)
+                End If
             End Set
         End Property
 

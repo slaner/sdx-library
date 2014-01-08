@@ -57,7 +57,6 @@ Namespace Controls
 
             ' 내용이 변경됬으므로, TextChanged 이벤트를 발생시킨다.
             m_Buffer.Insert(tSS, [Char])
-            RaiseEvent TextChanged()
 
             m_iCaretPosition += 1
             'ScrollTextBox()

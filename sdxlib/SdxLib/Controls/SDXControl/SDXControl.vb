@@ -10,45 +10,48 @@ Namespace Controls
     Public Class SDXControl
         Inherits SdxObject
 
-
-
         ''' <summary>
-        ''' 그래픽 컴포넌트 요소의 마우스 이벤트를 처리할 메서드를 나타냅니다.
+        ''' 컨트롤의 마우스 입력에 대한 이벤트를 처리할 메서드를 나타냅니다.
         ''' </summary>
         ''' <param name="Button">눌린 마우스 버튼을 가져옵니다.</param>
         ''' <param name="Location">이벤트가 발생한 마우스의 위치를 가져옵니다.</param>
-        Public Delegate Sub SdxControlMouseEventHandler(ByVal Button As MouseButton, ByVal Location As Point)
+        Public Delegate Sub SDXControlMouseEventHandler(ByVal Button As MouseButton, ByVal Location As Point)
 
         ''' <summary>
-        ''' 그래픽 컴포넌트 요소의 키보드 이벤트를 처리할 메서드를 나타냅니다.
+        ''' 컨트롤의 키보드 입력에 대한 이벤트를 처리할 메서드를 나타냅니다.
         ''' </summary>
         ''' <param name="Key">눌린 키보드 버튼을 가져옵니다.</param>
-        Public Delegate Sub SdxControlKeyboardEventHandler(ByVal Key As Windows.Forms.Keys)
+        Public Delegate Sub SDXControlKeyboardEventHandler(ByVal Key As Windows.Forms.Keys)
 
         ''' <summary>
-        ''' 처리할 데이터가 없는 그래픽 컴포넌트 요소의 이벤트를 처리할 메서드를 나타냅니다.
+        ''' 처리할 데이터가 없는 컨트롤에 대한 이벤트를 처리할 메서드를 나타냅니다.
         ''' </summary>
-        Public Delegate Sub SdxControlEmptyEventHandler()
+        Public Delegate Sub SDXControlEmptyEventHandler()
+
+        ''' <summary>
+        ''' 컨트롤의 속성 변경에 대한 이벤트를 처리할 메서드를 나타냅니다.
+        ''' </summary>
+        ''' <param name="OldValue">속성이 변경되기 이전의 값을 입력합니다.</param>
+        ''' <param name="NewValue">변경된 속성의 값을 입력합니다.</param>
+        Public Delegate Sub SDXControlPropertyChangedHandler(ByVal OldValue As Object, ByVal NewValue As Object)
 
 
 
+        Public Event MouseEnter As SDXControlEmptyEventHandler          ' O
+        Public Event MouseLeave As SDXControlEmptyEventHandler          ' O
 
+        Public Event MouseDown As SDXControlMouseEventHandler           ' O
+        Public Event MouseUp As SDXControlMouseEventHandler             ' O
+        Public Event MouseClick As SDXControlMouseEventHandler          ' O
+        Public Event MouseDblClick As SDXControlMouseEventHandler       ' O
+        Public Event MouseMove As SDXControlMouseEventHandler           ' O
 
-        Public Event MouseEnter As SdxControlEmptyEventHandler          ' O
-        Public Event MouseLeave As SdxControlEmptyEventHandler          ' O
+        Public Event KeyPress As SDXControlKeyboardEventHandler
+        Public Event KeyDown As SDXControlKeyboardEventHandler
+        Public Event KeyUp As SDXControlKeyboardEventHandler
 
-        Public Event MouseDown As SdxControlMouseEventHandler           ' O
-        Public Event MouseUp As SdxControlMouseEventHandler             ' O
-        Public Event MouseClick As SdxControlMouseEventHandler          ' O
-        Public Event MouseDblClick As SdxControlMouseEventHandler       ' O
-        Public Event MouseMove As SdxControlMouseEventHandler           ' O
-
-        Public Event KeyPress As SdxControlKeyboardEventHandler
-        Public Event KeyDown As SdxControlKeyboardEventHandler
-        Public Event KeyUp As SdxControlKeyboardEventHandler
-
-        Public Event GotFocus As SdxControlEmptyEventHandler
-        Public Event LostFocus As SdxControlEmptyEventHandler
+        Public Event GotFocus As SDXControlEmptyEventHandler
+        Public Event LostFocus As SDXControlEmptyEventHandler
 
         Public Event ControlAdded()
         Public Event ControlRemoved()
