@@ -283,6 +283,13 @@ SDXLibrary
 	<summary>
  폰트의 두께를 정의합니다.
  </summary>
+</member><member name="M:SDXLib.Controls.SDXControl.ProcessMessage(System.Windows.Forms.Message@,System.Boolean@,System.Boolean@)">
+	<summary>
+ 메세지를 처리합니다.
+ </summary>
+	<param name="m">받은 메세지를 입력합니다.</param>
+	<param name="ProcessAsDefault">이 메세지를 WndProc 함수로 처리할 것인지 DefWndProc 함수로 처리할 것인지에 대한 여부를 입력합니다. (True의 경우, DefWndProc 함수로 처리합니다.)</param>
+	<param name="Handled">이 메세지에 대해 추가적인 처리를 원치 않는 경우, 이 값을 True로 입력합니다.</param>
 </member><member name="M:SDXLib.Controls.SDXControl.OnMouseLeaveInternal">
 	<summary>
  MouseLeave 이벤트를 발생시킵니다.
@@ -332,6 +339,27 @@ SDXLibrary
  선을 그립니다.
  </summary>
 	<param name="Target">선을 그릴 대상 Line 개체를 입력합니다.</param>
+</member><member name="T:SDXLib.Controls.SDXControl.SDXControlMouseEventHandler">
+	<summary>
+ 컨트롤의 마우스 입력에 대한 이벤트를 처리할 메서드를 나타냅니다.
+ </summary>
+	<param name="Button">눌린 마우스 버튼을 가져옵니다.</param>
+	<param name="Location">이벤트가 발생한 마우스의 위치를 가져옵니다.</param>
+</member><member name="T:SDXLib.Controls.SDXControl.SDXControlKeyboardEventHandler">
+	<summary>
+ 컨트롤의 키보드 입력에 대한 이벤트를 처리할 메서드를 나타냅니다.
+ </summary>
+	<param name="Key">눌린 키보드 버튼을 가져옵니다.</param>
+</member><member name="T:SDXLib.Controls.SDXControl.SDXControlEmptyEventHandler">
+	<summary>
+ 처리할 데이터가 없는 컨트롤에 대한 이벤트를 처리할 메서드를 나타냅니다.
+ </summary>
+</member><member name="T:SDXLib.Controls.SDXControl.SDXControlPropertyChangedHandler">
+	<summary>
+ 컨트롤의 속성 변경에 대한 이벤트를 처리할 메서드를 나타냅니다.
+ </summary>
+	<param name="OldValue">속성이 변경되기 이전의 값을 입력합니다.</param>
+	<param name="NewValue">변경된 속성의 값을 입력합니다.</param>
 </member><member name="T:SDXLib.Controls.SDXTextBox.SelectionInfo">
 	<summary>
  선택 영역의 정보를 저장합니다.
@@ -367,6 +395,18 @@ SDXLibrary
 </member><member name="F:SDXLib.Controls.SDXTextBox.m_bShifted">
 	<summary>
  쉬프트키의 상태를 저장합니다.
+ </summary>
+</member><member name="F:SDXLib.Controls.SDXTextBox.m_HideCaret">
+	<summary>
+ 한글 입력 중 캐럿을 숨기기 위해 사용함
+ </summary>
+</member><member name="F:SDXLib.Controls.SDXTextBox.m_CaretTick">
+	<summary>
+ 캐럿 표시 토글을 위한 틱 카운트를 저장합니다.
+ </summary>
+</member><member name="F:SDXLib.Controls.SDXTextBox.m_ShowCaret">
+	<summary>
+ 캐럿을 표시할 것인지의 여부를 저장합니다.
  </summary>
 </member><member name="T:SDXLib.Controls.SDXTextBox">
 	<summary>
@@ -412,10 +452,6 @@ SDXLibrary
 	<summary>
  미사일 효과를 구현하는 효과 클래스입니다.
  </summary>
-</member><member name="E:SDXLib.Controls.SDXControl.FontChanged">
-	<summary>
- 글꼴이 변경될 때 발생합니다.
- </summary>
 </member><member name="P:SDXLib.Controls.SDXControl.Focused">
 	<summary>
  컨트롤이 포커스를 가지고 있는지 여부를 확인합니다.
@@ -423,6 +459,10 @@ SDXLibrary
 </member><member name="P:SDXLib.Controls.SDXControl.BackColor">
 	<summary>
  컨트롤의 배경 색을 가져오거나 설정합니다.
+ </summary>
+</member><member name="P:SDXLib.Controls.SDXControl.BackgroundImage">
+	<summary>
+ 컨트롤의 배경 이미지를 가져오거나 설정합니다.
  </summary>
 </member><member name="P:SDXLib.Controls.SDXControl.ForeColor">
 	<summary>
@@ -1111,21 +1151,6 @@ SDXLibrary
 	<summary>
  플레이어의 키보드 상태를 가져오거나 설정합니다.
  </summary>
-</member><member name="T:SDXLib.Controls.SDXControl.SdxControlMouseEventHandler">
-	<summary>
- 그래픽 컴포넌트 요소의 마우스 이벤트를 처리할 메서드를 나타냅니다.
- </summary>
-	<param name="Button">눌린 마우스 버튼을 가져옵니다.</param>
-	<param name="Location">이벤트가 발생한 마우스의 위치를 가져옵니다.</param>
-</member><member name="T:SDXLib.Controls.SDXControl.SdxControlKeyboardEventHandler">
-	<summary>
- 그래픽 컴포넌트 요소의 키보드 이벤트를 처리할 메서드를 나타냅니다.
- </summary>
-	<param name="Key">눌린 키보드 버튼을 가져옵니다.</param>
-</member><member name="T:SDXLib.Controls.SDXControl.SdxControlEmptyEventHandler">
-	<summary>
- 처리할 데이터가 없는 그래픽 컴포넌트 요소의 이벤트를 처리할 메서드를 나타냅니다.
- </summary>
 </member><member name="F:SDXLib.Controls.SDXControl.g_Text">
 	<summary>
  요소가 나타내는 제목을 저장합니다.
@@ -1164,7 +1189,7 @@ SDXLibrary
  </summary>
 </member><member name="F:SDXLib.Controls.SDXControl.m_DotWidth">
 	<summary>
- 점 문자의 넓이를 저장합니다.
+ [Internal Access] 점 문자의 넓이를 저장합니다.
  </summary>
 </member><member name="F:SDXLib.Controls.SDXControl.g_HaveFocus">
 	<summary>
@@ -1173,6 +1198,42 @@ SDXLibrary
 </member><member name="F:SDXLib.Controls.SDXControl.g_Enabled">
 	<summary>
  컨트롤이 활성화되었는지의 여부를 저장합니다.
+ </summary>
+</member><member name="F:SDXLib.Controls.SDXControl.g_BackgroundImage">
+	<summary>
+ 컨트롤의 배경 이미지를 저장합니다.
+ </summary>
+</member><member name="F:SDXLib.Controls.SDXControl.g_DoNotProcessMouseMessages">
+	<summary>
+ 마우스 메세지를 처리할 것인지의 여부를 저장합니다.
+ </summary>
+</member><member name="F:SDXLib.Controls.SDXControl.g_DoNotProcessKeyboardMessages">
+	<summary>
+ 키보드 메세지를 처리할 것인지의 여부를 저장합니다.
+ </summary>
+</member><member name="F:SDXLib.Controls.SDXControl.m_LMouseDown">
+	<summary>
+ 마우스 왼쪽 버튼이 눌렸는지 여부를 저장합니다.
+ </summary>
+</member><member name="F:SDXLib.Controls.SDXControl.m_MMouseDown">
+	<summary>
+ 마우스 중간 버튼이 눌렸는지 여부를 저장합니다.
+ </summary>
+</member><member name="F:SDXLib.Controls.SDXControl.m_RMouseDown">
+	<summary>
+ 마우스 오른쪽 버튼이 눌렸는지 여부를 저장합니다.
+ </summary>
+</member><member name="F:SDXLib.Controls.SDXControl.m_Holding">
+	<summary>
+ 마우스를 캡쳐중인지 여부를 저장합니다.
+ </summary>
+</member><member name="F:SDXLib.Controls.SDXControl.m_MouseEntered">
+	<summary>
+ 컨트롤 내부에 마우스가 들어왔는지 여부를 저장합니다.
+ </summary>
+</member><member name="F:SDXLib.Controls.SDXControl.m_Font">
+	<summary>
+ DirectX Font 개체를 저장합니다.
  </summary>
 </member><member name="T:SDXLib.Controls.SDXControl">
 	<summary>
@@ -1695,13 +1756,19 @@ SDXLibrary
 	<summary>
  마우스 버튼을 정의합니다.
  </summary>
+</member><member name="M:SDXLib.Controls.SDXControl.DrawControl(Microsoft.DirectX.Direct3D.Sprite)">
+	<summary>
+ 컨트롤을 그립니다.
+ </summary>
+	<param name="Target">컨트롤이 그려질 대상 스프라이트를 입력합니다.</param>
+</member><member name="M:SDXLib.Controls.SDXControl.DrawControlText(Microsoft.DirectX.Direct3D.Sprite)">
+	<summary>
+ 컨트롤의 텍스트를 그립니다.
+ </summary>
+	<param name="TextTarget">컨트롤의 텍스트를 그릴 대상 스프라이트를 입력합니다.</param>
 </member><member name="T:SDXLib.OutputPrecision">
 	<summary>
  원하는 대로 출력할 수 있도록 도와주는 값을 정의합니다.
- </summary>
-</member><member name="E:SDXLib.Controls.SDXTextBox.TextChanged">
-	<summary>
- 텍스트박스의 내용이 변경될 때 발생합니다.
  </summary>
 </member><member name="F:SDXLib.SdxEffect.g_Size">
 	<summary>
@@ -1833,6 +1900,46 @@ SDXLibrary
 </member><member name="T:SDXLib.FontQuality">
 	<summary>
  폰트의 품질을 정의합니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.FontChanged">
+	<summary>
+ 글꼴이 변경될 때 발생합니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.TextChanged">
+	<summary>
+ 텍스트가 변경될 때 발생합니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.LocationChanged">
+	<summary>
+ 위치가 변경될 때 발생합니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.SizeChanged">
+	<summary>
+ 크기가 변경될 때 발생합니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.BackColorChanged">
+	<summary>
+ 배경색이 변경될 때 발생합니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.ForeColorChanged">
+	<summary>
+ 글꼴색이 변경될 때 발생합니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.OpacityChanged">
+	<summary>
+ 투명도가 변경될 때 발생합니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.EnabledChanged">
+	<summary>
+ 활성 여부가 변경될 때 발생합니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.TextAlignmentChanged">
+	<summary>
+ 텍스트 정렬 방식이 변경될 때 발생합니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.BackgroundImageChanged">
+	<summary>
+ 배경 이미지기 변경될 때 발생합니다.
  </summary>
 </member><member name="M:SDXLib.SdxBlock2D.#ctor(SDXLib.SDXMain,System.Drawing.Image)">
 	<summary>
@@ -2547,6 +2654,66 @@ SDXLibrary
 </member><member name="P:SDXLib.SDXMain.Texts">
 	<summary>
  그려질 텍스트 목록을 가져옵니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.MouseEnter">
+	<summary>
+ 컨트롤 내부로 마우스 포인터가 들어오면 발생합니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.MouseLeave">
+	<summary>
+ 마우스 포인터가 컨트롤 밖으로 나가면 발생합니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.MouseDown">
+	<summary>
+ 마우스 버튼이 눌리면 발생합니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.MouseUp">
+	<summary>
+ 마우스 버튼이 때어지면 발생합니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.MouseClick">
+	<summary>
+ 컨트롤 내부를 마우스로 클릭하면 발생합니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.MouseDblClick">
+	<summary>
+ 컨트롤 내부를 더블 클릭을 하면 발생합니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.MouseMove">
+	<summary>
+ 컨트롤 내부에서 마우스를 움직이면 발생합니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.KeyPress">
+	<summary>
+ 컨트롤에 포커스가 있을 때 키가 눌리면 발생합니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.KeyDown">
+	<summary>
+ 컨트롤에 포커스가 있을 때 키가 눌려지면 발생합니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.KeyUp">
+	<summary>
+ 컨트롤에 포커스가 있을 때 눌렸던 키가 때어지면 발생합니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.GotFocus">
+	<summary>
+ 컨트롤이 포커스를 받으면 발생합니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.LostFocus">
+	<summary>
+ 컨트롤이 포커스를 잃으면 발생합니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.ControlAdded">
+	<summary>
+ 컨트롤 목록에 새로 컨트롤이 추가되면 발생합니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.ControlRemoved">
+	<summary>
+ 컨트롤 목록에서 컨트롤이 삭제되면 발생합니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.Click">
+	<summary>
+ 컨트롤을 클릭하면 발생합니다.
  </summary>
 </member><member name="P:SDXLib.SdxBlock2D.AlphaMap">
 	<summary>

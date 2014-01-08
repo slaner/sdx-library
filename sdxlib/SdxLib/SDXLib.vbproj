@@ -128,15 +128,16 @@
   <ItemGroup>
     <Compile Include="Controls\SDXControl\Constructor\ctor.vb" />
     <Compile Include="Controls\SDXControl\Controls\SDXTextBox\Constructor\ctor.vb" />
-    <Compile Include="Controls\SDXControl\Controls\SDXTextBox\Event\Changed.vb" />
     <Compile Include="Controls\SDXControl\Controls\SDXTextBox\Method\EventHandler.vb" />
     <Compile Include="Controls\SDXControl\Controls\SDXTextBox\Method\MsgHandler.vb" />
     <Compile Include="Controls\SDXControl\Controls\SDXTextBox\Method\Renderer.vb" />
     <Compile Include="Controls\SDXControl\Controls\SDXTextBox\Method\TextBoxFunction.vb" />
     <Compile Include="Controls\SDXControl\Controls\SDXTextBox\Property\prop.vb" />
-    <Compile Include="Controls\SDXControl\Event\Chaged.vb" />
+    <Compile Include="Controls\SDXControl\Delegate\EventDelegates.vb" />
+    <Compile Include="Controls\SDXControl\Event\GeneralControlEvents.vb" />
+    <Compile Include="Controls\SDXControl\Event\PropertyChanged.vb" />
     <Compile Include="Controls\SDXControl\Method\MessageHandler.vb" />
-    <Compile Include="Controls\SDXControl\Method\method.vb" />
+    <Compile Include="Controls\SDXControl\Method\Renderer.vb" />
     <Compile Include="Controls\SDXControl\Property\InternalAccessProp.vb" />
     <Compile Include="Controls\SDXControl\Property\prop.vb" />
     <Compile Include="Controls\SDXControl\SDXControl.vb" />
@@ -269,7 +270,7 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="SdxLib.cd" />
+    <None Include="SDXLib.cd" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

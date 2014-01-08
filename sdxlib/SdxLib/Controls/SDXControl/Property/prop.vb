@@ -69,7 +69,9 @@ Namespace Controls
                 Return g_Font
             End Get
             Set(ByVal value As Drawing.Font)
+                If g_Font Is Nothing Then GoTo updateImmediately
                 If Not g_Font.Equals(value) Then
+updateImmediately:
                     Dim previousValue As Font = g_Font
                     g_Font = value
                     g_FontHeight = value.Height
