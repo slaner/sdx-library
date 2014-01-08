@@ -68,9 +68,19 @@ Namespace Controls
         ''' </summary>
         Private m_bShifted As Boolean = False
 
+        ''' <summary>
+        ''' 한글 입력 중 캐럿을 숨기기 위해 사용함
+        ''' </summary>
         Private m_HideCaret As Boolean = False
 
+        ''' <summary>
+        ''' 캐럿 표시 토글을 위한 틱 카운트를 저장합니다.
+        ''' </summary>
         Private m_CaretTick As Int32 = 0
+
+        ''' <summary>
+        ''' 캐럿을 표시할 것인지의 여부를 저장합니다.
+        ''' </summary>
         Private m_ShowCaret As Boolean = False
 
         Private m_bComposition As Boolean = False

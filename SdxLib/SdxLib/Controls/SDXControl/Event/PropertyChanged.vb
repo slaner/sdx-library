@@ -41,5 +41,15 @@
         ''' </summary>
         Public Event EnabledChanged As SDXControlPropertyChangedHandler
 
+        ''' <summary>
+        ''' 텍스트 정렬 방식이 변경될 때 발생합니다.
+        ''' </summary>
+        Public Event TextAlignmentChanged As SDXControlPropertyChangedHandler
+
+        ''' <summary>
+        ''' 배경 이미지기 변경될 때 발생합니다.
+        ''' </summary>
+        Public Event BackgroundImageChanged As SDXControlPropertyChangedHandler
+
     End Class
 End Namespace

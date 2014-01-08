@@ -36,29 +36,6 @@ Namespace Controls
         Public Delegate Sub SDXControlPropertyChangedHandler(ByVal OldValue As Object, ByVal NewValue As Object)
 
 
-
-        Public Event MouseEnter As SDXControlEmptyEventHandler          ' O
-        Public Event MouseLeave As SDXControlEmptyEventHandler          ' O
-
-        Public Event MouseDown As SDXControlMouseEventHandler           ' O
-        Public Event MouseUp As SDXControlMouseEventHandler             ' O
-        Public Event MouseClick As SDXControlMouseEventHandler          ' O
-        Public Event MouseDblClick As SDXControlMouseEventHandler       ' O
-        Public Event MouseMove As SDXControlMouseEventHandler           ' O
-
-        Public Event KeyPress As SDXControlKeyboardEventHandler
-        Public Event KeyDown As SDXControlKeyboardEventHandler
-        Public Event KeyUp As SDXControlKeyboardEventHandler
-
-        Public Event GotFocus As SDXControlEmptyEventHandler
-        Public Event LostFocus As SDXControlEmptyEventHandler
-
-        Public Event ControlAdded()
-        Public Event ControlRemoved()
-        Public Event Paint()
-        Public Event Click()                                            ' O
-
-
         ''' <summary>
         ''' 요소가 나타내는 제목을 저장합니다.
         ''' </summary>
@@ -105,7 +82,7 @@ Namespace Controls
         Private g_FontHeight As Single
 
         ''' <summary>
-        ''' 점 문자의 넓이를 저장합니다.
+        ''' [Internal Access] 점 문자의 넓이를 저장합니다.
         ''' </summary>
         Private m_DotWidth As Int32
 
@@ -119,13 +96,51 @@ Namespace Controls
         ''' </summary>
         Private g_Enabled As Boolean = True
 
+        ''' <summary>
+        ''' 컨트롤의 배경 이미지를 저장합니다.
+        ''' </summary>
+        Private g_BackgroundImage As Image = Nothing
+
+
+
+        ''' <summary>
+        ''' 마우스 메세지를 처리할 것인지의 여부를 저장합니다.
+        ''' </summary>
         Private g_DoNotProcessMouseMessages As Boolean = False
+
+        ''' <summary>
+        ''' 키보드 메세지를 처리할 것인지의 여부를 저장합니다.
+        ''' </summary>
         Private g_DoNotProcessKeyboardMessages As Boolean = False
+
+        ''' <summary>
+        ''' 마우스 왼쪽 버튼이 눌렸는지 여부를 저장합니다.
+        ''' </summary>
         Private m_LMouseDown As Boolean = False
+
+        ''' <summary>
+        ''' 마우스 중간 버튼이 눌렸는지 여부를 저장합니다.
+        ''' </summary>
         Private m_MMouseDown As Boolean = False
+
+        ''' <summary>
+        ''' 마우스 오른쪽 버튼이 눌렸는지 여부를 저장합니다.
+        ''' </summary>
         Private m_RMouseDown As Boolean = False
+
+        ''' <summary>
+        ''' 마우스를 캡쳐중인지 여부를 저장합니다.
+        ''' </summary>
         Private m_Holding As Boolean = False
+
+        ''' <summary>
+        ''' 컨트롤 내부에 마우스가 들어왔는지 여부를 저장합니다.
+        ''' </summary>
         Private m_MouseEntered As Boolean = False
+
+        ''' <summary>
+        ''' DirectX Font 개체를 저장합니다.
+        ''' </summary>
         Friend m_Font As D3.Font
 
 

@@ -30,6 +30,22 @@ Namespace Controls
         End Property
 
         ''' <summary>
+        ''' 컨트롤의 배경 이미지를 가져오거나 설정합니다.
+        ''' </summary>
+        Public Property BackgroundImage As Image
+            Get
+                Return g_BackgroundImage
+            End Get
+            Set(ByVal value As Image)
+                If Not value.Equals(g_BackgroundImage) Then
+                    Dim previousValue As Image = value
+                    g_BackgroundImage = value
+                    RaiseEvent BackgroundImageChanged(previousValue, value)
+                End If
+            End Set
+        End Property
+
+        ''' <summary>
         ''' 컨트롤의 글꼴 색을 가져오거나 설정합니다.
         ''' </summary>
         Public Property ForeColor As Color
@@ -137,8 +153,10 @@ Namespace Controls
                 Return New Rectangle(g_Location, g_Size)
             End Get
             Set(ByVal value As Rectangle)
-                g_Location = value.Location
-                g_Size = value.Size
+                If value <> Me.Bounds Then
+                    g_Location = value.Location
+                    g_Size = value.Size
+                End If
             End Set
         End Property
 
@@ -150,7 +168,11 @@ Namespace Controls
                 Return g_Location.X
             End Get
             Set(ByVal value As Int32)
-                g_Location.X = value
+                If value <> g_Location.X Then
+                    Dim previousValue As Point = g_Location
+                    g_Location.X = value
+                    RaiseEvent LocationChanged(previousValue, g_Location)
+                End If
             End Set
         End Property
 
@@ -162,7 +184,11 @@ Namespace Controls
                 Return g_Location.Y
             End Get
             Set(ByVal value As Int32)
-                g_Location.Y = value
+                If value <> g_Location.Y Then
+                    Dim previousValue As Point = g_Location
+                    g_Location.Y = value
+                    RaiseEvent LocationChanged(previousValue, g_Location)
+                End If
             End Set
         End Property
 
@@ -192,7 +218,11 @@ Namespace Controls
                 Return g_Size.Width
             End Get
             Set(ByVal value As Int32)
-                g_Size.Width = value
+                If value <> g_Size.Width Then
+                    Dim previousValue As Point = g_Location
+                    g_Size.Width = value
+                    RaiseEvent SizeChanged(previousValue, g_Size)
+                End If
             End Set
         End Property
 
@@ -204,7 +234,11 @@ Namespace Controls
                 Return g_Size.Height
             End Get
             Set(ByVal value As Int32)
-                g_Size.Height = value
+                If value <> g_Size.Height Then
+                    Dim previousValue As Point = g_Location
+                    g_Size.Height = value
+                    RaiseEvent SizeChanged(previousValue, g_Size)
+                End If
             End Set
         End Property
 
@@ -216,7 +250,11 @@ Namespace Controls
                 Return g_TextAlignment
             End Get
             Set(ByVal value As TextAlignment)
-                g_TextAlignment = value
+                If value <> g_TextAlignment Then
+                    Dim previousValue As TextAlignment = g_TextAlignment
+                    g_TextAlignment = value
+                    RaiseEvent TextAlignmentChanged(previousValue, value)
+                End If
             End Set
         End Property
 
