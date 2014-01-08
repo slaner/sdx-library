@@ -6,6 +6,7 @@ Namespace Controls
 
             m_Font = New D3.Font(MyBase.Main.Device, fd)
             g_FontHeight = fd.Height
+            RaiseEvent FontChanged()
 
         End Sub
 

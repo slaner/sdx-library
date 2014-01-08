@@ -49,6 +49,7 @@ Namespace Controls
                 g_FontHeight = value.Height
                 m_Font = New D3.Font(MyBase.Main.Device, g_Font)
                 m_DotWidth = m_Font.MeasureString(Nothing, ".", 0, 0).Width
+                RaiseEvent FontChanged()
             End Set
         End Property
 

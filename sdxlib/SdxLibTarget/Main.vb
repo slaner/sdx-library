@@ -20,6 +20,7 @@ Module EntryPoint
         With SDXTB
             .Location = New Point(256, 700)
             .ForeColor = Color.Black
+            .Size = New Size(512, 0)
             .Font = New Font("Orbit-B BT", 20.25, FontStyle.Bold, GraphicsUnit.World)
             .Size = New Size(512, SDXTB.FontHeight)
             .TextAlign = TextAlignment.VerticalCenter Or TextAlignment.Left

@@ -129,10 +129,12 @@
     <Compile Include="Controls\SDXControl\Constructor\ctor.vb" />
     <Compile Include="Controls\SDXControl\Controls\SDXTextBox\Constructor\ctor.vb" />
     <Compile Include="Controls\SDXControl\Controls\SDXTextBox\Event\Changed.vb" />
+    <Compile Include="Controls\SDXControl\Controls\SDXTextBox\Method\EventHandler.vb" />
     <Compile Include="Controls\SDXControl\Controls\SDXTextBox\Method\MsgHandler.vb" />
     <Compile Include="Controls\SDXControl\Controls\SDXTextBox\Method\Renderer.vb" />
     <Compile Include="Controls\SDXControl\Controls\SDXTextBox\Method\TextBoxFunction.vb" />
     <Compile Include="Controls\SDXControl\Controls\SDXTextBox\Property\prop.vb" />
+    <Compile Include="Controls\SDXControl\Event\Chaged.vb" />
     <Compile Include="Controls\SDXControl\Method\MessageHandler.vb" />
     <Compile Include="Controls\SDXControl\Method\method.vb" />
     <Compile Include="Controls\SDXControl\Property\InternalAccessProp.vb" />
@@ -309,7 +311,6 @@
     <None Include="Resources\Explosion64.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controls\SDXControl\Event\" />
     <Folder Include="Objects\Deprecated\" />
   </ItemGroup>
   <ItemGroup>

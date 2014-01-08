@@ -54,12 +54,20 @@ Namespace Controls
         Private m_bGoingLeft As Boolean = False
 
 
+        ''' <summary>
+        ''' 컨트롤 영역 내부에 최대로 표시할 수 있는 문자의 갯수를 저장합니다.
+        ''' </summary>
         Private m_iMaxDisplayableCharacters As Int32 = 0
+
         Private m_iCaretPosition As Int32 = 0
         Private m_iLastCaretPosition As Int32 = 0
         Private m_bComposingChar As Boolean = False
 
+        ''' <summary>
+        ''' 쉬프트키의 상태를 저장합니다.
+        ''' </summary>
         Private m_bShifted As Boolean = False
+
         Private m_HideCaret As Boolean = False
 
         Private m_CaretTick As Int32 = 0

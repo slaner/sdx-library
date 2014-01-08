@@ -4,9 +4,7 @@ Namespace Controls
 
         Friend Overrides Sub DrawControl(ByVal Target As Microsoft.DirectX.Direct3D.Sprite)
 
-            Target.Draw2D(MyBase.Main.SharedResource.ColorMask, New Rectangle(0, 0, 1, 1), Me.Size + New Size(6, 6), Me.Location - New Size(3, 3), Color.Black)
-            Target.Draw2D(MyBase.Main.SharedResource.ColorMask, New Rectangle(0, 0, 1, 1), Me.Size + New Size(4, 4), Me.Location - New Size(2, 2), Color.White)
-
+            MyBase.DrawControl(Target)
 
             If Me.Focused AndAlso m_ShowCaret Then
 
@@ -29,8 +27,25 @@ Namespace Controls
 
         Friend Overrides Sub DrawControlText(ByVal TextTarget As Microsoft.DirectX.Direct3D.Sprite)
 
-            Me.Text = m_Buffer.ToString()
-            m_Font.DrawText(TextTarget, Me.Text, New Drawing.Rectangle(Me.Location, Me.Size), Me.TextAlign, Me.ForeColor)
+            Dim tmpText As String = m_Buffer.ToString()
+            If tmpText.Length > m_iMaxDisplayableCharacters Then
+                If tmpText.Length - m_ScrollLocation.X > m_iMaxDisplayableCharacters Then
+                    tmpText = tmpText.Substring(m_ScrollLocation.X, m_iMaxDisplayableCharacters)
+                Else
+                    tmpText = tmpText.Substring(m_ScrollLocation.X)
+                End If
+            Else
+                tmpText = tmpText.Substring(m_ScrollLocation.X)
+            End If
+
+            Dim iCount As Int32 = 1
+            Do While SDXHelper.GetTextWidth(m_Font, MyBase.DotWidth, tmpText) > Me.Width
+                m_ScrollLocation.X += 1
+                tmpText = tmpText.Substring(iCount)
+                iCount += 1
+            Loop
+
+            m_Font.DrawText(TextTarget, tmpText, New Drawing.Rectangle(Me.Location, Me.Size), Me.TextAlign, Me.ForeColor)
             m_CaretTick += 1
 
             If m_CaretTick >= g_CaretTick Then

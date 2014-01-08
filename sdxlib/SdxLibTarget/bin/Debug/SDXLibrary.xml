@@ -360,6 +360,14 @@ SDXLibrary
 	<summary>
  스크롤 위치를 저장합니다.
  </summary>
+</member><member name="F:SDXLib.Controls.SDXTextBox.m_iMaxDisplayableCharacters">
+	<summary>
+ 컨트롤 영역 내부에 최대로 표시할 수 있는 문자의 갯수를 저장합니다.
+ </summary>
+</member><member name="F:SDXLib.Controls.SDXTextBox.m_bShifted">
+	<summary>
+ 쉬프트키의 상태를 저장합니다.
+ </summary>
 </member><member name="T:SDXLib.Controls.SDXTextBox">
 	<summary>
  사용자가 편집할 수 있는 텍스트박스를 구현합니다.
@@ -403,6 +411,10 @@ SDXLibrary
 </member><member name="T:SDXLib.SdxMissile">
 	<summary>
  미사일 효과를 구현하는 효과 클래스입니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.FontChanged">
+	<summary>
+ 글꼴이 변경될 때 발생합니다.
  </summary>
 </member><member name="P:SDXLib.Controls.SDXControl.Focused">
 	<summary>

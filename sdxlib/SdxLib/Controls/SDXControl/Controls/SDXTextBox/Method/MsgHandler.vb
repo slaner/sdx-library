@@ -207,7 +207,7 @@ Namespace Controls
                 Case 29                             ' Ctrl ]
 
                 Case Else
-                    ApplyInput(Chr(m.WParam))
+                    ApplyInput(ChrW(m.WParam))
 
             End Select
         End Sub
