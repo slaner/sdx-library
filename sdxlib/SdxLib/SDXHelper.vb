@@ -107,20 +107,6 @@ Public Class SDXHelper
     End Function
 
     ''' <summary>
-    ''' 원점으로부터 지정된 각도 및 거리만큼 떨어진 점을 계산합니다.
-    ''' </summary>
-    ''' <param name="p1">원점으로 사용할 점의 위치를 입력합니다.</param>
-    ''' <param name="Angle">거리를 계산할 때 사용할 각도를 입력합니다.</param>
-    ''' <param name="Distance">원점과의 거리를 입력합니다.</param>
-    Public Shared Function GetDistanceVector(ByVal p1 As Vector2D, ByVal Angle As Single, ByVal Distance As Single) As Vector2D
-
-        Return New Vector2D(
-            p1.X + (Math.Sin(DegToRad(Angle)) * Distance),
-            p1.Y + (Math.Cos(DegToRad(Angle)) * Distance))
-
-    End Function
-
-    ''' <summary>
     ''' 두 점 사이의 각도를 계산합니다.
     ''' </summary>
     ''' <param name="p1">원점으로 사용할 점의 위치를 입력합니다.</param>
