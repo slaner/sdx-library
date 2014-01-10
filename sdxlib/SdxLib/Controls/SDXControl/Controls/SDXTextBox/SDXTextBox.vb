@@ -49,10 +49,21 @@ Namespace Controls
         ''' <summary>
         ''' 스크롤 위치를 저장합니다.
         ''' </summary>
-        Private m_ScrollLocation As Point
+        Private m_ScrollPoint As Point
+
+        Private g_ReadOnly As Boolean = False
 
         Private m_bGoingLeft As Boolean = False
 
+        ''' <summary>
+        ''' 텍스트를 저장합니다.
+        ''' </summary>
+        Private m_BufferText As String = Nothing
+
+        ''' <summary>
+        ''' 이전 버퍼를 저장합니다.
+        ''' </summary>
+        Private m_PrevBuffer As StringBuilder = Nothing
 
         ''' <summary>
         ''' 컨트롤 영역 내부에 최대로 표시할 수 있는 문자의 갯수를 저장합니다.
@@ -82,6 +93,10 @@ Namespace Controls
         ''' 캐럿을 표시할 것인지의 여부를 저장합니다.
         ''' </summary>
         Private m_ShowCaret As Boolean = False
+
+        Private m_iTextRange As Int32 = 0
+
+        Private m_PrevScrollText As String = Nothing
 
         Private m_bComposition As Boolean = False
 

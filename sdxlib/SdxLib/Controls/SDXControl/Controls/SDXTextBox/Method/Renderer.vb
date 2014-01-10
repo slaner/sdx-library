@@ -5,7 +5,7 @@ Namespace Controls
         Protected Friend Overrides Sub DrawControl(ByVal Target As Microsoft.DirectX.Direct3D.Sprite)
 
             ' 경계선을 그린다.
-            Target.Draw2D(MyBase.Main.SharedResource.ColorMask, New Rectangle(0, 0, 1, 1), Me.Size, Me.Location, Color.Black)
+            Target.Draw2D(MyBase.Main.SharedResource.ColorMask, New Rectangle(0, 0, 1, 1), Me.Size, Me.Location, Color.FromArgb(Me.Opacity, Color.Black))
 
             ' 컨트롤 내부를 그린다.
             MyBase.DrawControl(Target)
@@ -31,25 +31,7 @@ Namespace Controls
 
         Protected Friend Overrides Sub DrawControlText(ByVal TextTarget As Microsoft.DirectX.Direct3D.Sprite)
 
-            Dim tmpText As String = m_Buffer.ToString()
-            If tmpText.Length > m_iMaxDisplayableCharacters Then
-                If tmpText.Length - m_ScrollLocation.X > m_iMaxDisplayableCharacters Then
-                    tmpText = tmpText.Substring(m_ScrollLocation.X, m_iMaxDisplayableCharacters)
-                Else
-                    tmpText = tmpText.Substring(m_ScrollLocation.X)
-                End If
-            Else
-                tmpText = tmpText.Substring(m_ScrollLocation.X)
-            End If
-
-            Dim iCount As Int32 = 1
-            Do While SDXHelper.GetTextWidth(m_Font, MyBase.DotWidth, tmpText) > Me.Width
-                m_ScrollLocation.X += 1
-                tmpText = tmpText.Substring(iCount)
-                iCount += 1
-            Loop
-
-            m_Font.DrawText(TextTarget, tmpText, New Drawing.Rectangle(Me.Location, Me.Size), Me.TextAlign, Me.ForeColor)
+            m_Font.DrawText(TextTarget, m_BufferText, New Drawing.Rectangle(Me.Location, Me.Size), Me.TextAlign Or TextAlignment.NoClip, Color.FromArgb(Me.Opacity, Me.ForeColor))
             m_CaretTick += 1
 
             If m_CaretTick >= g_CaretTick Then

@@ -40,7 +40,17 @@
             End Set
         End Property
 
-
+        ''' <summary>
+        ''' 컨트롤이 읽기 전용인지 나타내는 값을 가져오거나 설정합니다.
+        ''' </summary>
+        Public Property [ReadOnly] As Boolean
+            Get
+                Return g_ReadOnly
+            End Get
+            Set(ByVal value As Boolean)
+                g_ReadOnly = value
+            End Set
+        End Property
 
     End Class
 End Namespace

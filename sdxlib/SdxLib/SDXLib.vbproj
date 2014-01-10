@@ -241,7 +241,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Types\Classes\ExtendList.vb" />
-    <Compile Include="Types\Enumerations\BackgroundImageLayout.vb" />
+    <Compile Include="Types\Enumerations\ImageLayout.vb" />
     <Compile Include="Types\Enumerations\CharacterSet.vb" />
     <Compile Include="Types\Enumerations\FadeEffect.vb" />
     <Compile Include="Types\Enumerations\FadeType.vb" />

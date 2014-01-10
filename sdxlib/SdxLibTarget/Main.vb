@@ -3,9 +3,11 @@
 Module EntryPoint
 
     WithEvents SDX As SDXMain
-    WithEvents SDXTB As Controls.SDXTextBox
-    Private SDXP As SdxRacingTypePlayer
+    WithEvents txtChat As Controls.SDXTextBox
+    WithEvents btnExit As Controls.SDXControl
     Private TextSurface As SdxFont
+    Private l As SdxLine2D
+    Private a As Single = 0.0F
 
     Public Sub Main()
 
@@ -15,19 +17,29 @@ Module EntryPoint
         SDX.WorldGravity = 4                                ' World Gravity
         SDX.UseCustomStep = False                           ' Don't use user defined step
 
-
-        SDXTB = New Controls.SDXTextBox(SDX)
-        With SDXTB
-            .Location = New Point(256, 700)
+        btnExit = New Controls.SDXControl(SDX)
+        With btnExit
+            .Text = "종료하려면 이 버튼을 클릭하세요"
+            .FontDescription = New FontDescription(1, "돋움", 28, True, 0, 0, 0, FontQuality.ClearType, FontWeight.Medium, 15)
+            .Size = New Size(512, btnExit.FontHeight * 2)
+            .Location = New Point(256, 0)
             .ForeColor = Color.Black
-            .Size = New Size(512, 0)
-            .Font = New Font("Orbit-B BT", 20.25, FontStyle.Bold, GraphicsUnit.World)
-            .Size = New Size(512, SDXTB.FontHeight)
+            .BackColor = Color.LimeGreen
+            .TextAlign = TextAlignment.VerticalCenter Or TextAlignment.Center
+        End With
+
+        txtChat = New Controls.SDXTextBox(SDX)
+        With txtChat
+            .Location = New Point(0, 128)
+            .ForeColor = Color.Black
+            .FontDescription = New FontDescription(1, "돋움", 15, False, 0, 0, 0, FontQuality.ClearType, FontWeight.Medium, 6)
+            .Size = New Size(128, txtChat.FontHeight)
             .TextAlign = TextAlignment.VerticalCenter Or TextAlignment.Left
             .BackColor = Color.LightGray
         End With
 
-        SDX.Components.Add(SDXTB)
+        SDX.Components.Add(btnExit)
+        SDX.Components.Add(txtChat)
 
         ' Add grids
         For i As Int32 = 0 To (SDX.Window.ClientSize.Width / 32) - 1
@@ -60,17 +72,10 @@ Module EntryPoint
         Loop
         FileClose(fid)
 
-        SDXP = New SdxRacingTypePlayer(SDX, My.Resources.Player)
-        With SDXP
-            .IgnoreBlocks = True
-            .Speed = 5
-            .Location = New Vector2D(128, 128)
-            .ApplyShadow = False
-            .Active = True
-            .ChaseCamera = True
-        End With
-
-        SDX.Players.Add(SDXP)
+        l = New SdxLine2D(SDX, New Vector2D(128, 128), New Vector2D(0, 0))
+        l.Thickness = 2
+        l.Color = Color.Black
+        SDX.Lines.Add(l)
 
         TextSurface = New SdxFont(SDX, New FontDescription(CharacterSet.Default, "나눔고딕코딩", 20, False, 0, OutputPrecision.Default, PitchAndFamily.DefaultPitch, FontQuality.ClearTypeNatural, FontWeight.Black, 8))
         TextSurface.UseTextSprite = True
@@ -78,51 +83,29 @@ Module EntryPoint
 
     End Sub
 
+    Private Sub SDX_OnDrawFrame(ByVal FrameRate As Integer) Handles SDX.OnDrawFrame
+
+        l.End = SDXHelper.GetDistanceVector(l.Start, a, 128)
+        a += 1
+        If a >= 360 Then a = 0
+
+    End Sub
+
     Private Sub SDX_OnTextSpriteBegin() Handles SDX.OnTextSpriteBegin
 
         TextSurface.DrawText(2, 0, Color.Black, "Fps       : " & SDX.FrameRate & vbCrLf & _
-                                                "Blocks    : " & SDX.Blocks.Count & vbCrLf & _
-                                                "View Information" & vbCrLf & _
-                                                "  Location: " & SDX.ViewLocation.ToString & vbCrLf & _
-                                                "Player Information" & vbCrLf & _
-                                                "  Location: " & SDXP.Location.ToString & vbCrLf & _
-                                                "  Angle   : " & SDXP.Angle & vbCrLf & _
-                                                "  Speed   : " & SDXP.CurrentSpeed & " pxl/s")
-
+                                                "Blocks    : " & SDX.Blocks.Count )
 
     End Sub
 
-    Private Sub SDXTB_KeyDown(ByVal Key As System.Windows.Forms.Keys) Handles SDXTB.KeyDown
-
-        Debug.Print("SDXTextBox::KeyDown(Key: {0})", Key.ToString)
-
+    Private Sub btnExit_Click() Handles btnExit.Click
+        SDX.Dispose()
     End Sub
-
-    Private Sub SDXTB_MouseClick(ByVal Button As SDXLib.MouseButton, ByVal Location As System.Drawing.Point) Handles SDXTB.MouseClick
-
-        Debug.Print("SDXTextBox::MouseClick(Button: {0}, Location: {1})", Button.ToString, Location.ToString)
-
+    Private Sub btnExit_MouseEnter() Handles btnExit.MouseEnter
+        btnExit.BackColor = Color.Lime
     End Sub
-
-    Private Sub SDXTB_MouseDown(ByVal Button As SDXLib.MouseButton, ByVal Location As System.Drawing.Point) Handles SDXTB.MouseDown
-
-        Debug.Print("SDXTextBox::MouseDown(Button: {0}, Location: {1})", Button.ToString, Location.ToString)
-
-    End Sub
-    Private Sub SDXTB_MouseEnter() Handles SDXTB.MouseEnter
-
-        Debug.Print("SDXTextBox::MouseEnter")
-
-    End Sub
-    Private Sub SDXTB_MouseLeave() Handles SDXTB.MouseLeave
-
-        Debug.Print("SDXTextBox::MouseLeave")
-
-    End Sub
-    Private Sub SDXTB_MouseUp(ByVal Button As SDXLib.MouseButton, ByVal Location As System.Drawing.Point) Handles SDXTB.MouseUp
-
-        Debug.Print("SDXTextBox::MouseUp(Button: {0}, Location: {1})", Button.ToString, Location.ToString)
-
+    Private Sub btnExit_MouseLeave() Handles btnExit.MouseLeave
+        btnExit.BackColor = Color.LimeGreen
     End Sub
 
 End Module

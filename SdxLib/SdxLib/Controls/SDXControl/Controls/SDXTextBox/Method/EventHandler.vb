@@ -1,7 +1,7 @@
 ﻿Namespace Controls
     Partial Class SDXTextBox
 
-        Private Sub MybaseFontChanged() Handles MyBase.FontChanged
+        Private Sub MyBaseSizeChanged() Handles MyBase.SizeChanged
 
             Dim iCount As Int32 = 1
             Do

@@ -47,9 +47,14 @@
         Public Event TextAlignmentChanged As SDXControlPropertyChangedHandler
 
         ''' <summary>
-        ''' 배경 이미지기 변경될 때 발생합니다.
+        ''' 배경 이미지가 변경될 때 발생합니다.
         ''' </summary>
         Public Event BackgroundImageChanged As SDXControlPropertyChangedHandler
+
+        ''' <summary>
+        ''' FontDescription 구조체의 값이 변경될 때 발생합니다.
+        ''' </summary>
+        Public Event FontDescriptionChanged As SDXControlPropertyChangedHandler
 
     End Class
 End Namespace
