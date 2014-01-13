@@ -384,9 +384,17 @@ SDXLibrary
 	<summary>
  선택 영역을 저장합니다.
  </summary>
-</member><member name="F:SDXLib.Controls.SDXTextBox.m_ScrollLocation">
+</member><member name="F:SDXLib.Controls.SDXTextBox.m_ScrollPoint">
 	<summary>
  스크롤 위치를 저장합니다.
+ </summary>
+</member><member name="F:SDXLib.Controls.SDXTextBox.m_BufferText">
+	<summary>
+ 텍스트를 저장합니다.
+ </summary>
+</member><member name="F:SDXLib.Controls.SDXTextBox.m_PrevBuffer">
+	<summary>
+ 이전 버퍼를 저장합니다.
  </summary>
 </member><member name="F:SDXLib.Controls.SDXTextBox.m_iMaxDisplayableCharacters">
 	<summary>
@@ -471,6 +479,10 @@ SDXLibrary
 </member><member name="P:SDXLib.Controls.SDXControl.Font">
 	<summary>
  컨트롤의 글꼴을 가져오거나 설정합니다.
+ </summary>
+</member><member name="P:SDXLib.Controls.SDXControl.FontDescription">
+	<summary>
+ 컨트롤의 글꼴을 설명하는 FontDescription 구조체를 가져오거나 설정합니다.
  </summary>
 </member><member name="P:SDXLib.Controls.SDXControl.Text">
 	<summary>
@@ -629,16 +641,24 @@ SDXLibrary
 	<param name="FadeStep">페이드 효과의 길이를 입력합니다. (일반적으로, 60프레임인 경우에 1초는 60입니다)</param>
 	<param name="Preserve">페이드 효과가 끝난 후에 개체를 보존할 것인지의 여부를 입력합니다.</param>
 	<param name="ToggleFadeEffect">페이드 효과를 번갈아가며 적용할 것인지의 여부를 입력합니다.</param>
-</member><member name="T:SDXLib.ImageLayout">
+</member><member name="M:SDXLib.Controls.SDXTextBox.UpdateScrollText(System.Boolean)">
 	<summary>
- 이미지를 표시하는 방법을 정의합니다.
+ 스크롤 텍스트를 업데이트합니다.
+ </summary>
+</member><member name="M:SDXLib.Controls.SDXTextBox.MoveCaretEx(System.Int32,System.Int32,System.Int32)">
+	<summary>
+ 캐럿을 이동시킵니다.
+ </summary>
+</member><member name="M:SDXLib.Controls.SDXTextBox.MoveCaret(System.Int32)">
+	<summary>
+ 캐럿을 지정된 위치로 이동시킵니다.
  </summary>
 </member><member name="M:SDXLib.Controls.SDXTextBox.ApplyInput(System.Char)">
 	<summary>
  + 문자를 추가합니다.
  </summary>
 </member><member name="M:SDXLib.Controls.SDXTextBox.DeleteSelectionText">
-	<summary>
+	<summary> 
  + 선택 문자열을 제거한 문자열을 가져옵니다.
  </summary>
 </member><member name="M:SDXLib.Controls.SDXTextBox.HaveSelection">
@@ -692,6 +712,10 @@ SDXLibrary
 </member><member name="P:SDXLib.Controls.SDXTextBox.SelectionLength">
 	<summary>
  선택 영역의 길이를 가져오거나 설정합니다.
+ </summary>
+</member><member name="P:SDXLib.Controls.SDXTextBox.ReadOnly">
+	<summary>
+ 컨트롤이 읽기 전용인지 나타내는 값을 가져오거나 설정합니다.
  </summary>
 </member><member name="T:SDXLib.IGraphicsEffect">
 	<summary>
@@ -855,6 +879,13 @@ SDXLibrary
  </summary>
 	<param name="width"></param>
 	<param name="height"></param>
+</member><member name="M:SDXLib.SDXHelper.GetDistanceVector(SDXLib.Vector2D,System.Single,System.Single)">
+	<summary>
+ 원점으로부터 지정된 각도 및 거리만큼 떨어진 점을 계산합니다.
+ </summary>
+	<param name="p1">원점으로 사용할 점의 위치를 입력합니다.</param>
+	<param name="Angle">거리를 계산할 때 사용할 각도를 입력합니다.</param>
+	<param name="Distance">원점과의 거리를 입력합니다.</param>
 </member><member name="M:SDXLib.SDXHelper.GetVectorAngle(System.Drawing.Point,System.Drawing.Point)">
 	<summary>
  두 점 사이의 각도를 계산합니다.
@@ -1187,10 +1218,6 @@ SDXLibrary
 	<summary>
  글꼴의 높이를 저장합니다.
  </summary>
-</member><member name="F:SDXLib.Controls.SDXControl.m_DotWidth">
-	<summary>
- [Internal Access] 점 문자의 넓이를 저장합니다.
- </summary>
 </member><member name="F:SDXLib.Controls.SDXControl.g_HaveFocus">
 	<summary>
  포커스가 있는지의 여부를 저장합니다.
@@ -1203,6 +1230,10 @@ SDXLibrary
 	<summary>
  컨트롤의 배경 이미지를 저장합니다.
  </summary>
+</member><member name="F:SDXLib.Controls.SDXControl.g_BackgroundImageLayout">
+	<summary>
+ 배경 이미지를 표시하는 방법을 저장합니다.
+ </summary>
 </member><member name="F:SDXLib.Controls.SDXControl.g_DoNotProcessMouseMessages">
 	<summary>
  마우스 메세지를 처리할 것인지의 여부를 저장합니다.
@@ -1211,29 +1242,17 @@ SDXLibrary
 	<summary>
  키보드 메세지를 처리할 것인지의 여부를 저장합니다.
  </summary>
-</member><member name="F:SDXLib.Controls.SDXControl.m_LMouseDown">
+</member><member name="F:SDXLib.Controls.SDXControl.g_FontDescription">
 	<summary>
- 마우스 왼쪽 버튼이 눌렸는지 여부를 저장합니다.
+ FontDescription 구조체를 저장합니다.
  </summary>
-</member><member name="F:SDXLib.Controls.SDXControl.m_MMouseDown">
+</member><member name="M:SDXLib.Controls.SDXControl.Dispose">
 	<summary>
- 마우스 중간 버튼이 눌렸는지 여부를 저장합니다.
+ 개체의 사용을 종료하고, 메모리에서 해제합니다.
  </summary>
-</member><member name="F:SDXLib.Controls.SDXControl.m_RMouseDown">
+</member><member name="P:SDXLib.Controls.SDXControl.Disposed">
 	<summary>
- 마우스 오른쪽 버튼이 눌렸는지 여부를 저장합니다.
- </summary>
-</member><member name="F:SDXLib.Controls.SDXControl.m_Holding">
-	<summary>
- 마우스를 캡쳐중인지 여부를 저장합니다.
- </summary>
-</member><member name="F:SDXLib.Controls.SDXControl.m_MouseEntered">
-	<summary>
- 컨트롤 내부에 마우스가 들어왔는지 여부를 저장합니다.
- </summary>
-</member><member name="F:SDXLib.Controls.SDXControl.m_Font">
-	<summary>
- DirectX Font 개체를 저장합니다.
+ 개체가 삭제되었는지 나타내는 값을 가져옵니다.
  </summary>
 </member><member name="T:SDXLib.Controls.SDXControl">
 	<summary>
@@ -1939,7 +1958,11 @@ SDXLibrary
  </summary>
 </member><member name="E:SDXLib.Controls.SDXControl.BackgroundImageChanged">
 	<summary>
- 배경 이미지기 변경될 때 발생합니다.
+ 배경 이미지가 변경될 때 발생합니다.
+ </summary>
+</member><member name="E:SDXLib.Controls.SDXControl.FontDescriptionChanged">
+	<summary>
+ FontDescription 구조체의 값이 변경될 때 발생합니다.
  </summary>
 </member><member name="M:SDXLib.SdxBlock2D.#ctor(SDXLib.SDXMain,System.Drawing.Image)">
 	<summary>
@@ -2133,6 +2156,10 @@ SDXLibrary
 	<summary>
  플레이어가 점프를 하고 있는 중인지의 여부를 가져옵니다.
  </summary>
+</member><member name="T:SDXLib.ImageLayout">
+	<summary>
+ 이미지를 표시하는 방법을 정의합니다.
+ </summary>
 </member><member name="F:SDXLib.Vector2D.g_X">
 	<summary>
  X 좌표 값을 저장합니다.
@@ -2207,8 +2234,12 @@ SDXLibrary
 	<summary>
  + Delete 키에 대한 작업을 구현합니다.
  </summary>
-</member><member name="M:SDXLib.Controls.SDXTextBox.ProcessWmCharMsg(System.Windows.Forms.Message)">
+</member><member name="M:SDXLib.Controls.SDXTextBox.UpdateBufferText">
 	<summary>
+ 버퍼 텍스트를 업데이트합니다.
+ </summary>
+</member><member name="M:SDXLib.Controls.SDXTextBox.ProcessWmCharMsg(System.Windows.Forms.Message)">
+	<summary> 
  WM_CHAR 메세지를 처리합니다.
  </summary>
 </member><member name="M:SDXLib.Controls.SDXTextBox.ProcessWmKeyDownMsg(System.Windows.Forms.Message)">

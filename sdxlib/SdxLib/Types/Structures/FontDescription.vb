@@ -1,17 +1,10 @@
-﻿' SlaneR's DirectX Library (SdxLib)
+﻿' SlaneR's DirectX Library (SDXLib)
 '
 ' File:
 '   FontDescription.vb
 '
-' Dependencies:
-'   -
-'
-' Version: 
-'   Maj | Min | Bld | Rev
-'    1  .  0  .  0  .  0
-'
 ' Date:
-'   2013/12/09
+'   2014/01/10
 '
 ' Author:
 '   SlaneR
@@ -19,13 +12,13 @@
 ' Contact:
 '   dev.slaner@gmail.com
 '
-' Description:
-'   Defines Microsoft.DirectX.Direct3D.FontDescription as SdxMain.FontDescription to maximize compatibility.
+' Changelog:
+'   클래스에서 구조체로 형식이 변경되었습니다. (2014/01/10)
 
 ''' <summary>
 ''' 폰트의 특성을 저장합니다.
 ''' </summary>
-Public Class FontDescription
+Public Structure FontDescription
 
     Private g_CharSet As CharacterSet
     Private g_FaceName As String
@@ -39,7 +32,7 @@ Public Class FontDescription
     Private g_Width As Int32
 
     ' DEFAULT CONSTRUCTOR FOR ZERO PARAMETER
-    Public Sub New()
+    Shared Sub New()
     End Sub
 
     ''' <summary>
@@ -211,4 +204,33 @@ Public Class FontDescription
 
     End Operator
 
-End Class
+    Public Shared Operator =(ByVal origin As FontDescription, ByVal other As FontDescription) As Boolean
+
+        Return (origin.CharSet = other.CharSet) AndAlso
+               (origin.FaceName = other.FaceName) AndAlso
+               (origin.Height = other.Height) AndAlso
+               (origin.Italic = other.Italic) AndAlso
+               (origin.MipLevels = other.MipLevels) AndAlso
+               (origin.OutputPrecision = other.OutputPrecision) AndAlso
+               (origin.PitchAndFamily = other.PitchAndFamily) AndAlso
+               (origin.Quality = other.Quality) AndAlso
+               (origin.Weight = other.Weight) AndAlso
+               (origin.Width = other.Width)
+
+    End Operator
+    Public Shared Operator <>(ByVal origin As FontDescription, ByVal other As FontDescription) As Boolean
+
+        Return (origin.CharSet <> other.CharSet) OrElse
+               (origin.FaceName <> other.FaceName) OrElse
+               (origin.Height <> other.Height) OrElse
+               (origin.Italic <> other.Italic) OrElse
+               (origin.MipLevels <> other.MipLevels) OrElse
+               (origin.OutputPrecision <> other.OutputPrecision) OrElse
+               (origin.PitchAndFamily <> other.PitchAndFamily) OrElse
+               (origin.Quality <> other.Quality) OrElse
+               (origin.Weight <> other.Weight) OrElse
+               (origin.Width <> other.Width)
+
+    End Operator
+
+End Structure

@@ -7,12 +7,12 @@
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{0F4F429E-7B14-4C36-B353-C5FBD4F28B3A}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <StartupObject>Sub Main</StartupObject>
     <RootNamespace>SdxLibTarget</RootNamespace>
     <AssemblyName>SdxLibTarget</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>Console</MyType>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -173,15 +173,6 @@
       <Project>{BDCE35B4-E644-4732-8E9E-6193A2C0D106}</Project>
       <Name>SDXLib</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Road.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Player.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\WoodBlock.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -241,7 +241,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Types\Classes\ExtendList.vb" />
-    <Compile Include="Types\Enumerations\BackgroundImageLayout.vb" />
+    <Compile Include="Types\Enumerations\ImageLayout.vb" />
     <Compile Include="Types\Enumerations\CharacterSet.vb" />
     <Compile Include="Types\Enumerations\FadeEffect.vb" />
     <Compile Include="Types\Enumerations\FadeType.vb" />
@@ -285,55 +285,7 @@
     <None Include="Resources\DefaultControlsets.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Dot2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\GreenLaser.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\GreenStripe.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\GreenStripe2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Laser8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Laser12.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\GreenBar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\RedBar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Explosion64.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Objects\Deprecated\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MIS.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Bullet.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Bullet_2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\WoodBlock.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\IronBlock.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Road.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\FillColorTexture.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ColorMask.png" />

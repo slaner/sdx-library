@@ -40,6 +40,7 @@ Namespace Controls
                 If Not value.Equals(g_BackgroundImage) Then
                     Dim previousValue As Image = value
                     g_BackgroundImage = value
+                    m_BackgroundImage = D3.Texture.FromBitmap(MyBase.Main.Device, g_BackgroundImage, 0, 1)
                     RaiseEvent BackgroundImageChanged(previousValue, value)
                 End If
             End Set
@@ -60,6 +61,8 @@ Namespace Controls
                 End If
             End Set
         End Property
+
+
 
         ''' <summary>
         ''' 컨트롤의 글꼴을 가져오거나 설정합니다.
@@ -82,6 +85,28 @@ updateImmediately:
                 End If
             End Set
         End Property
+
+        ''' <summary>
+        ''' 컨트롤의 글꼴을 설명하는 FontDescription 구조체를 가져오거나 설정합니다.
+        ''' </summary>
+        Public Property FontDescription As FontDescription
+            Get
+                Return g_FontDescription
+            End Get
+            Set(ByVal value As FontDescription)
+                If value <> g_FontDescription Then
+                    Dim previousValue As FontDescription = g_FontDescription
+                    g_FontDescription = value
+                    g_FontHeight = value.Height
+                    If Not IsNothing(m_Font) Then m_Font.Dispose()
+                    m_Font = New D3.Font(MyBase.Main.Device, g_FontDescription)
+                    m_DotWidth = m_Font.MeasureString(Nothing, ".", 0, 0).Width
+                    RaiseEvent FontDescriptionChanged(previousValue, value)
+                End If
+            End Set
+        End Property
+
+
 
         ''' <summary>
         ''' 컨트롤의 표시 텍스트를 가져오거나 설정합니다.
