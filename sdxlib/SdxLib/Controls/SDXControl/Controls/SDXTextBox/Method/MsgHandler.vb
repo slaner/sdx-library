@@ -5,241 +5,6 @@ Imports System.Windows.Forms
 Namespace Controls
     Partial Class SDXTextBox
 
-        ''' <summary>
-        ''' + 백스페이스 키에 대한 작업을 구현합니다.
-        ''' </summary>
-        Private Sub ProcessBackspace()
-
-            ' 읽기 전용일 경우, 지우기 작업을 하지 않는다.
-            If Me.ReadOnly Then Return
-
-            ' 캐럿의 위치를 확인하고,
-            ' 0보다 클 경우, 왼쪽에 문자가 있는 것이므로
-            ' 문자를 지우고, 캐럿 위치를 1 감소시킨다.
-            If m_Buffer.Length > 0 Then
-
-                ' 선택 영역이 있는 경우,
-                If HaveSelection() Then
-
-                    ' 선택 영역을 지운다.
-                    m_Buffer = DeleteSelectionText()
-
-                    ' 버퍼 텍스트를 업데이트하고,
-                    UpdateBufferText()
-
-                    ' 캐럿을 표시되도록 한다.
-                    EnsureCaretVisible()
-
-                Else
-
-                    ' 왼쪽에 지울 수 있는 문자가 있는 경우,
-                    If g_Selection.Start > 0 Then
-
-                        ' 캐럿을 이동시키고,
-                        MoveCaretEx(g_Selection.Start, g_Selection.Start - 1)
-
-                        ' 문자 하나를 지운다.
-                        m_Buffer = m_Buffer.Remove(g_Selection.Start, 1)
-
-                        ' 버퍼 텍스트를 업데이트하고,
-                        UpdateBufferText()
-
-                        ' 캐럿을 표시되도록 한다.
-                        EnsureCaretVisible()
-
-                    End If
-
-                End If
-
-            End If
-            UpdateScrollText()
-
-        End Sub
-
-        ''' <summary>
-        ''' + 왼쪽 화살표 방향키에 대한 작업을 구현합니다.
-        ''' </summary>
-        Private Sub LeftArrowAction()
-
-            MoveCaret(m_iCaretPosition - 1)
-
-            ' 선택 모드일 경우 (쉬프트키가 눌린 상태)
-            If m_bShifted Then
-
-                ' 왼쪽으로 이동하고 있는 경우
-                If m_bGoingLeft Then
-
-                    ' 선택 영역이 1 이상부터 시작하고, 선택 영역의 시작 + 길이가 버퍼의 길이 이하인 경우
-                    If g_Selection.Start > 0 AndAlso g_Selection.Start + g_Selection.Length <= m_Buffer.Length Then
-
-                        ' 선택 영역을 1 감소시키고, 길이를 1 증가시킨다.
-                        SetSelection(g_Selection.Start - 1, g_Selection.Length + 1)
-
-                    End If
-
-                Else
-
-                    ' 선택 영역의 길이가 0일 경우, (위의 m_bGoingLeft 값이 True일 때와 동일하게 처리함)
-                    If g_Selection.Length = 0 Then
-
-                        ' 왼쪽으로 이동하므로, m_bGoingLeft 변수의 값을 True로 한다.
-                        m_bGoingLeft = True
-
-                        ' 선택 영역이 1 이상부터 시작하고, 선택 영역의 시작 + 길이가 버퍼의 길이 이하인 경우
-                        If g_Selection.Start > 0 AndAlso g_Selection.Start + g_Selection.Length <= m_Buffer.Length Then
-
-                            ' 선택 영역을 1 감소시키고, 길이를 1 증가시킨다.
-                            SetSelection(g_Selection.Start - 1, g_Selection.Length + 1)
-
-                        End If
-                        Return
-
-                    End If
-
-                    ' 선택 영역의 길이가 0이 아닐 경우, 길이를 1 감소시킨다.
-                    g_Selection.Length -= 1
-
-                End If
-
-            Else
-
-                ' 선택 영역을 초기화한다.
-                SetSelection(m_iCaretPosition, 0)
-                g_Selection.Length = 0
-                m_bGoingLeft = False
-
-            End If
-
-        End Sub
-
-        ''' <summary>
-        ''' + 오른쪽 화살표 방향키에 대한 작업을 구현합니다.
-        ''' </summary>
-        Private Sub RightArrowAction()
-
-            MoveCaret(m_iCaretPosition + 1)
-
-            ' 선택 모드일 경우 (쉬프트키가 눌린 상태)
-            If m_bShifted Then
-
-                ' 왼쪽으로 이동하고 있는 경우
-                If m_bGoingLeft Then
-
-                    ' 선택 영역이 1 이상부터 시작하고, 선택 영역의 시작 + 길이가 버퍼의 길이 이하인 경우
-                    If g_Selection.Start >= 0 AndAlso g_Selection.Start + g_Selection.Length <= m_Buffer.Length Then
-
-                        ' 선택 영역을 1 증가시키고, 길이를 1 감소시킨다.
-                        SetSelection(g_Selection.Start + 1, g_Selection.Length - 1)
-
-                    End If
-
-                    ' 선택 영역의 길이가 0일 경우,
-                    If g_Selection.Length = 0 Then
-
-                        ' 왼쪽으로 이동하지 않으므로, m_bGoingLeft 변수의 값을 False로 하고,
-                        ' 함수의 실행을 종료한다.
-                        m_bGoingLeft = False
-                        Return
-
-                    End If
-
-                Else
-
-                    ' 선택 영역의 길이를 1 증가시킨다.
-                    SetSelection(g_Selection.Start, g_Selection.Length + 1)
-
-                End If
-
-            Else
-                
-                ' 선택 영역을 초기화한다.
-                SetSelection(m_iCaretPosition, 0)
-                g_Selection.Length = 0
-                m_bGoingLeft = False
-
-            End If
-
-        End Sub
-
-        ''' <summary>
-        ''' + Home 키에 대한 작업을 구현합니다.
-        ''' </summary>
-        Private Sub HomeAction()
-
-            MoveCaret(0)
-            m_ScrollPoint.X = 0
-            If m_bShifted Then
-                If g_Selection.Start = 0 Then
-                    m_bGoingLeft = False
-                Else
-                    m_bGoingLeft = True
-                End If
-                SetSelection(0, g_Selection.Start)
-            Else
-                m_bGoingLeft = False
-                SetSelection(0, 0)
-            End If
-
-        End Sub
-
-        ''' <summary>
-        ''' + End 키에 대한 작업을 구현합니다.
-        ''' </summary>
-        Private Sub EndAction()
-
-            MoveCaret(m_Buffer.Length)
-
-            If m_bShifted Then
-                If m_bGoingLeft Then
-                    SetSelection(g_Selection.Start + g_Selection.Length, m_Buffer.Length - (g_Selection.Start + g_Selection.Length))
-                    m_bGoingLeft = False
-                Else
-                    SetSelection(g_Selection.Start, m_Buffer.Length - g_Selection.Start)
-                End If
-            Else
-                m_bGoingLeft = False
-                SetSelection(m_Buffer.Length, 0)
-            End If
-
-        End Sub
-
-        ''' <summary>
-        ''' + Delete 키에 대한 작업을 구현합니다.
-        ''' </summary>
-        Private Sub DeleteAction()
-
-            ' 읽기 전용일 경우, 지우기 작업을 하지 않는다.
-            If Me.ReadOnly Then Return
-
-            m_bGoingLeft = False
-            If g_Selection.Start < m_Buffer.Length Then
-                m_Buffer = m_Buffer.Remove(g_Selection.Start, 1)
-            End If
-
-        End Sub
-
-        '' CACHING?
-
-        ''' <summary>
-        ''' 버퍼 텍스트를 업데이트합니다.
-        ''' </summary>
-        Private Sub UpdateBufferText()
-
-            ' 이전 버퍼와 현재 버퍼의 내용이 다를 경우,
-            If Not Object.ReferenceEquals(m_Buffer, m_PrevBuffer) Then
-
-                ' 버퍼의 값을 문자열로 변경한다.
-                m_BufferText = m_Buffer.ToString()
-
-                ' 이전 버퍼에 현재 버퍼를 대입한다.
-                m_PrevBuffer = New StringBuilder(m_Buffer.ToString(), m_Buffer.Capacity)
-
-            End If
-
-        End Sub
-
-
-
         ''' <summary> 
         ''' WM_CHAR 메세지를 처리합니다.
         ''' </summary>
@@ -294,24 +59,100 @@ Namespace Controls
         End Sub
 
         ''' <summary>
+        ''' WM_IME_COMPOSITION 메세지를 처리합니다.
+        ''' </summary>
+        Private Function ProcessImeComposition(ByVal m As Windows.Forms.Message) As Boolean
+
+            ' 조합중인 문자를 완성한 경우:
+            If m.LParam.ToInt32 And ImeFlags.GCS_RESULTSTR Then
+
+                ' 선택 영역이 있는 경우:
+                If HaveSelection() Then
+
+                    ' 선택 영역을 지운다.
+                    m_Buffer = DeleteSelectionText()
+
+                End If
+
+            End If
+
+            ' 조합 문자:
+            If m.LParam.ToInt32 And ImeFlags.GCS_COMPSTR Then
+
+                ' IME 컨텍스트 포인터를 가져온다.
+                Dim hImc As IntPtr = ImmGetContext(MyBase.Main.Window.Handle)
+
+                ' 조합중인 문자의 길이를 가져온다.
+                Dim cpsLen As Int32 = ImmGetCompositionString(hImc, ImeFlags.GCS_COMPSTR, Nothing, 0)
+
+                ' 조합중인 문자를 가져오기 위해 바이트배열을 선언한다.
+                Dim strBytes(cpsLen - 1) As Byte
+
+                ' 조합중인 문자를 가져온다.
+                ImmGetCompositionString(hImc, ImeFlags.GCS_COMPSTR, strBytes, cpsLen)
+
+                ' 문자를 조합중인 경우
+                If m_bComposing Then
+
+                    ' 이전에 조합중이던 문자를 지운다.
+                    m_Buffer = RemoveSafe(m_Buffer, m_iCaretPosition, 1)
+
+                    ' 버퍼 텍스트를 업데이트한다.
+                    UpdateBufferText()
+
+                End If
+
+                ' 조합중인 문자의 길이가 0일 경우 (조합 취소)
+                If cpsLen = 0 Then
+                    m_bComposing = False
+                Else
+                    m_bComposing = True
+                End If
+
+                ' 조합중인 문자를 추가한다.
+                m_Buffer.Insert(m_iCaretPosition, Trim(Encoding.Unicode.GetString(strBytes, 0, cpsLen)))
+
+                ' 버퍼 텍스트를 업데이트한다.
+                UpdateBufferText()
+
+                ' 사용한 IME 컨텍스트를 해제한다.
+                ImmReleaseContext(MyBase.Main.Window.Handle, hImc)
+
+                ' 문자를 조합중일땐 캐럿을 보이지 않게 해야 하므로,
+                ' 캐럿을 숨긴다.
+                m_HideCaret = True
+
+                ' 스크롤 텍스트를 업데이트한다.
+                UpdateScrollText()
+
+                ' COMPSTR 플래그가 설정된 메세지에 대해서만 메세지를 처리한다.
+                Return True
+
+            End If
+
+            Return False
+
+        End Function
+
+        ''' <summary>
         ''' WM_KEYDOWN 메세지를 처리합니다.
         ''' </summary>
         Private Sub ProcessWmKeyDownMsg(ByVal m As Windows.Forms.Message)
             Select Case m.WParam
                 Case VirtualKeys.VK_LEFT
-                    MoveCaretEx(m_iCaretPosition, m_iCaretPosition - 1)
+                    MoveCaretEx(m_iCaretPosition, m_iCaretPosition - 1, True, m_bShifted)
 
                 Case VirtualKeys.VK_RIGHT
-                    MoveCaretEx(m_iCaretPosition, m_iCaretPosition + 1)
+                    MoveCaretEx(m_iCaretPosition, m_iCaretPosition + 1, , m_bShifted)
 
                 Case VirtualKeys.VK_HOME
-                    MoveCaretEx(m_iCaretPosition, 0)
+                    MoveCaretEx(m_iCaretPosition, 0, True, m_bShifted)
 
                 Case VirtualKeys.VK_END
-                    MoveCaretEx(0, m_BufferText.Length)
+                    MoveCaretEx(m_iCaretPosition, m_BufferText.Length, False, m_bShifted)
 
                 Case VirtualKeys.VK_DELETE
-                    DeleteAction()
+                    ProcessDelete()
 
                 Case VirtualKeys.VK_SHIFT
                     m_bShifted = True
@@ -337,12 +178,17 @@ Namespace Controls
         ''' </summary>
         Private Sub ProcessImeChar(ByVal m As Windows.Forms.Message)
 
-            If m_bComposition Then
+            ' 문자를 조합중인 경우,
+            If m_bComposing Then
+
+                ' 마지막 문자(조합중인 문자)를 지운다.
                 m_Buffer = RemoveSafe(m_Buffer, m_iCaretPosition, 1)
+
             End If
 
+            ' 문자를 추가한다.
             ApplyInput(ChrW(m.WParam))
-            m_bComposition = False
+            m_bComposing = False
 
         End Sub
 
@@ -362,8 +208,12 @@ Namespace Controls
 
                 Case WindowsMessages.WM_CHAR
                     SDXHelper.SDXTrace("WM_CHAR")
-                    ProcessWmCharMsg(m)
-                    Handled = True
+
+                    ' 읽기 전용이 아닐 경우에만 메세지를 처리한다.
+                    If Not Me.ReadOnly Then
+                        ProcessWmCharMsg(m)
+                        Handled = True
+                    End If
 
                 Case WindowsMessages.WM_INPUTLANGCHANGE
                     SDXHelper.SDXTrace("WM_INPUTLANGCHANGE")
@@ -389,58 +239,24 @@ Namespace Controls
 
                 Case WindowsMessages.WM_IME_CHAR
                     SDXHelper.SDXTrace("WM_IME_CHAR")
-                    ProcessImeChar(m)
-                    Handled = True
+
+                    ' 읽기 전용이 아닐 경우에만 메세지를 처리한다.
+                    If Not Me.ReadOnly Then
+                        ProcessImeChar(m)
+                        Handled = True
+                    End If
 
                 Case WindowsMessages.WM_IME_COMPOSITION
                     SDXHelper.SDXTrace("WM_IME_COMPOSITION")
 
-                    If m.LParam.ToInt32 And ImeFlags.GCS_RESULTSTR Then
-
-                        If HaveSelection() Then
-                            Debug.Print("GCS_RESULTSTR and HaveSelection(): True")
-                            m_Buffer = DeleteSelectionText()
-                        End If
-
-                    End If
-
-
-                    If m.LParam.ToInt32 And ImeFlags.GCS_COMPSTR Then
-
-                        Dim hImc As IntPtr = ImmGetContext(MyBase.Main.Window.Handle)
-                        Dim cpsLen As Int32 = ImmGetCompositionString(hImc, ImeFlags.GCS_COMPSTR, Nothing, 0)
-                        Dim strBytes(cpsLen) As Byte
-                        ImmGetCompositionString(hImc, ImeFlags.GCS_COMPSTR, strBytes, cpsLen)
-
-                        ' 문자를 조합중이면,
-                        If m_bComposition AndAlso m_bComposingChar Then
-
-                            ' 조합된 문자를 지운다.
-                            m_Buffer = RemoveSafe(m_Buffer, m_iCaretPosition, 1)
-                            UpdateBufferText()
-                            m_bComposingChar = False
-
-                        End If
-
-                        If cpsLen = 0 Then
-                            m_bComposition = False
-                            m_bComposingChar = False
+                    ' 읽기 전용이 아닐 경우에만 메세지를 처리한다.
+                    If Not Me.ReadOnly Then
+                        If ProcessImeComposition(m) Then
+                            Handled = True
                         Else
-                            m_bComposition = True
-                            m_bComposingChar = True
+                            ProcessAsDefault = False
                         End If
-
-                        m_Buffer.Insert(m_iCaretPosition, Trim(Encoding.Unicode.GetString(strBytes, 0, cpsLen)))
-                        UpdateBufferText()
-                        ImmReleaseContext(MyBase.Main.Window.Handle, hImc)
-                        m_HideCaret = True
-                        Handled = True
-
-                    Else
-                        ProcessAsDefault = False
                     End If
-
-                    UpdateScrollText()
 
             End Select
 

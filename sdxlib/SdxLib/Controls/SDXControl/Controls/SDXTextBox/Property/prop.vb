@@ -52,5 +52,17 @@
             End Set
         End Property
 
+        ''' <summary>
+        ''' 텍스트의 내용을 암호 문자로 표시할 때 암호 문자로 사용할 문자를 가져오거나 설정합니다.
+        ''' </summary>
+        Public Property PasswordChar As Char
+            Get
+                Return g_PasswordChar
+            End Get
+            Set(ByVal value As Char)
+                g_PasswordChar = value
+            End Set
+        End Property
+
     End Class
 End Namespace

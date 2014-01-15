@@ -31,7 +31,6 @@ Namespace Controls
 
         Protected Friend Overrides Sub DrawControlText(ByVal TextTarget As Microsoft.DirectX.Direct3D.Sprite)
 
-            Me.Text = m_BufferText
             m_Font.DrawText(TextTarget, m_ScrollText, New Drawing.Rectangle(Me.Location, Me.Size), Me.TextAlign Or TextAlignment.NoClip, Color.FromArgb(Me.Opacity, Me.ForeColor))
             m_CaretTick += 1
 

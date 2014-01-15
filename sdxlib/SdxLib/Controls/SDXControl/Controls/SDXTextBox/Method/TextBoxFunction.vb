@@ -1,8 +1,79 @@
 ﻿Imports System.Drawing
 Imports System.Windows.Forms
+Imports System.Text
 Namespace Controls
     Partial Class SDXTextBox
 
+        ''' <summary>
+        ''' DELETE 키에 대한 작업을 구현합니다.
+        ''' </summary>
+        Private Sub ProcessDelete()
+
+            ' 읽기 전용일 경우, 지우기 작업을 하지 않는다.
+            If Me.ReadOnly Then Return
+
+            Dim hasChanges As Boolean = False
+
+            ' 선택 문자열이 있는 경우:
+            If HaveSelection() Then
+                m_Buffer = DeleteSelectionText()
+                hasChanges = True
+            Else
+
+                ' 선택 문자열은 없고, 캐럿의 위치가 문자열의 길이보다 작을 경우
+                If m_iCaretPosition < m_Buffer.Length Then
+                    m_Buffer = RemoveSafe(m_Buffer, m_iCaretPosition, 1)
+                    hasChanges = True
+                End If
+
+            End If
+
+            ' 변경 사항이 있는 경우에만 버퍼/스크롤 텍스트를 업데이트한다.
+            If hasChanges Then
+                UpdateBufferText()
+                UpdateScrollText()
+            End If
+
+        End Sub
+
+        ''' <summary>
+        ''' 문자의 위치를 가져옵니다.
+        ''' </summary>
+        Private Function GetCharPos(ByVal Pos As Int32) As Point
+
+            If Pos < 0 Or Pos > m_Buffer.Length Then
+
+                SDXHelper.SDXTrace("GetCharPos Error! (Invalid Position)")
+                Return Point.Empty
+
+            End If
+
+        End Function
+
+        ''' <summary>
+        ''' 버퍼 텍스트를 업데이트합니다.
+        ''' </summary>
+        Private Sub UpdateBufferText()
+
+            ' 이전 버퍼와 현재 버퍼의 내용이 다를 경우,
+            If Not Object.ReferenceEquals(m_Buffer, m_PrevBuffer) Then
+
+                ' 버퍼의 값을 문자열로 변경한다.
+                m_BufferText = m_Buffer.ToString()
+
+                ' 이전 버퍼에 현재 버퍼를 대입한다.
+                m_PrevBuffer = New StringBuilder(m_Buffer.ToString(), m_Buffer.Capacity)
+
+                ' 컨트롤의 텍스트를 업데이트한다.
+                Me.Text = m_BufferText
+
+            End If
+
+        End Sub
+
+        ''' <summary>
+        ''' 안전한 문자열 제거 함수입니다.
+        ''' </summary>
         Private Function RemoveSafe(ByVal sb As System.Text.StringBuilder, ByVal Index As Int32, ByVal Length As Int32) As System.Text.StringBuilder
 
             If Length > sb.Length Then Return sb
@@ -65,7 +136,7 @@ Namespace Controls
         ''' <summary>
         ''' 캐럿을 이동시킵니다.
         ''' </summary>
-        Private Sub MoveCaretEx(ByVal Origin As Int32, ByVal Destination As Int32, Optional ByVal Length As Int32 = 0)
+        Private Sub MoveCaretEx(ByVal Origin As Int32, ByVal Destination As Int32, Optional ByVal GoingLeft As Boolean = False, Optional ByVal Shifted As Boolean = False)
 
             ' 예외를 방지하기 위한 유효성 검사:
             If String.IsNullOrEmpty(m_BufferText) Then
@@ -74,13 +145,12 @@ Namespace Controls
                 Return
 
             End If
-            If Origin < 0 OrElse Origin > m_BufferText.Length OrElse Destination < 0 OrElse Destination > m_BufferText.Length OrElse Length < 0 OrElse Destination + Length > m_BufferText.Length Then
+            If Origin < 0 OrElse Origin > m_BufferText.Length OrElse Destination < 0 OrElse Destination > m_BufferText.Length Then
 
-                SDXHelper.SDXTrace("MoveCaretEx Error! (Invalid Position/Length)")
+                SDXHelper.SDXTrace("MoveCaretEx Error! (Invalid Position)")
                 Return
 
             End If
-
             If Origin = Destination Then
 
                 SDXHelper.SDXTrace("MoveCaretEx Warning! (Origin and Destination is equal)")
@@ -88,43 +158,99 @@ Namespace Controls
 
             End If
 
-            m_iCaretPosition = Destination
-            g_Selection.Start = Destination
-            g_Selection.Length = Length
-            If Destination > Origin Then
+            ' 쉬프트키가 눌린 경우:
+            If Shifted Then
 
-                If g_Selection.Start > m_ScrollPoint.X + m_iTextRange Then
+                Debug.Print("SHIFT: {0} / LEFT: {1} / LEFTSELECT: {2}", Shifted, GoingLeft, m_bSelectLeft)
 
-                    m_ScrollPoint.X += g_Selection.Start - (m_ScrollPoint.X + m_iTextRange)
-                    UpdateScrollText(True)
-                    Debug.Print("SS: {0}/ CP: {1}/ SX: {2}/ TR: {3}/ ST: {4}", g_Selection.Start, m_iCaretPosition, m_ScrollPoint.X, m_iTextRange, m_ScrollText)
+                If GoingLeft Then
+
+                    If m_bSelectLeft Then
+
+                        ' 선택 영역을 1 감소시키고, 길이를 1 증가시킨다.
+                        SetSelection(g_Selection.Start - 1, g_Selection.Length + 1)
+                        m_iCaretPosition = g_Selection.Start
+
+                    Else
+
+                        ' 선택 영역의 길이가 0일 경우, (위의 m_bGoingLeft 값이 True일 때와 동일하게 처리함)
+                        If g_Selection.Length = 0 Then
+
+                            ' 왼쪽으로 이동하므로, m_bGoingLeft 변수의 값을 True로 한다.
+                            m_bSelectLeft = True
+
+                            ' 선택 영역을 1 감소시키고, 길이를 1 증가시킨다.
+                            SetSelection(g_Selection.Start - 1, g_Selection.Length + 1)
+                            m_iCaretPosition = g_Selection.Start
+
+                        Else
+
+                            ' 선택 영역의 길이가 0이 아닐 경우, 길이를 1 감소시킨다.
+                            g_Selection.Length -= 1
+                            m_iCaretPosition = g_Selection.Start + g_Selection.Length
+
+                        End If
+
+                    End If
+
+                Else
+
+                    ' 왼쪽으로 이동하고 있는 경우
+                    If m_bSelectLeft Then
+
+                        ' 선택 영역을 1 증가시키고, 길이를 1 감소시킨다.
+                        SetSelection(g_Selection.Start + 1, g_Selection.Length - 1)
+
+                        ' 선택 영역의 길이가 0일 경우,
+                        If g_Selection.Length = 0 Then
+
+                            ' 왼쪽으로 이동하지 않으므로, m_bGoingLeft 변수의 값을 False로 하고,
+                            ' 함수의 실행을 종료한다.
+                            m_bSelectLeft = False
+
+                        End If
+                        m_iCaretPosition = g_Selection.Start
+
+                    Else
+
+                        ' 선택 영역의 길이를 1 증가시킨다.
+                        SetSelection(g_Selection.Start, g_Selection.Length + 1)
+                        m_iCaretPosition = g_Selection.Start + g_Selection.Length
+
+                    End If
 
                 End If
 
             Else
 
-                If g_Selection.Start < m_ScrollPoint.X Then
+                m_iCaretPosition = Destination
+                g_Selection.Start = Destination
+                g_Selection.Length = 0
+                m_bSelectLeft = False
 
-                    m_ScrollPoint.X = g_Selection.Start
+            End If
+
+            If Destination > Origin Then
+
+                If m_iCaretPosition > m_ScrollPoint.X + m_iTextRange Then
+
+                    m_ScrollPoint.X += m_iCaretPosition - (m_ScrollPoint.X + m_iTextRange)
+                    UpdateScrollText(True)
+
+                End If
+
+            Else
+
+                If m_iCaretPosition < m_ScrollPoint.X Then
+
+                    m_ScrollPoint.X = m_iCaretPosition
                     UpdateScrollText(True)
 
                 End If
 
             End If
 
-        End Sub
-
-        ''' <summary>
-        ''' 캐럿을 지정된 위치로 이동시킵니다.
-        ''' </summary>
-        Private Sub MoveCaret(ByVal Position As Int32)
-
-            If Position < 0 OrElse Position > m_Buffer.Length Then
-                SDXHelper.SDXTrace("MoveCaret Error! (Invalid Position)")
-                Return
-            End If
-
-            m_iCaretPosition = Position
+            EnsureCaretVisible()
 
         End Sub
 
@@ -179,8 +305,10 @@ Namespace Controls
                 tSS As Int32 = g_Selection.Start
 
             If g_Selection.Start < m_iCaretPosition Then
-                MoveCaret(g_Selection.Start)
+
+                MoveCaretEx(m_iCaretPosition, g_Selection.Start)
                 g_Selection.Start = g_Selection.Length - (g_Selection.Length - g_Selection.Start)
+
             End If
             g_Selection.Length = 0
             Return RemoveSafe(m_Buffer, tSS, tSL)
@@ -225,6 +353,59 @@ Namespace Controls
 
             g_Selection.Start = Start
             g_Selection.Length = Length
+
+        End Sub
+
+        ''' <summary>
+        ''' + 백스페이스 키에 대한 작업을 구현합니다.
+        ''' </summary>
+        Private Sub ProcessBackspace()
+
+            ' 읽기 전용일 경우, 지우기 작업을 하지 않는다.
+            If Me.ReadOnly Then Return
+
+            ' 캐럿의 위치를 확인하고,
+            ' 0보다 클 경우, 왼쪽에 문자가 있는 것이므로
+            ' 문자를 지우고, 캐럿 위치를 1 감소시킨다.
+            If m_Buffer.Length > 0 Then
+
+                ' 선택 영역이 있는 경우,
+                If HaveSelection() Then
+
+                    ' 선택 영역을 지운다.
+                    m_Buffer = DeleteSelectionText()
+
+                    ' 버퍼 텍스트를 업데이트하고,
+                    UpdateBufferText()
+
+                    ' 캐럿을 표시되도록 한다.
+                    EnsureCaretVisible()
+
+                Else
+
+                    ' 왼쪽에 지울 수 있는 문자가 있는 경우,
+                    If g_Selection.Start > 0 Then
+
+                        ' 캐럿을 이동시키고,
+                        MoveCaretEx(g_Selection.Start, g_Selection.Start - 1)
+
+                        ' 문자 하나를 지운다.
+                        m_Buffer = m_Buffer.Remove(g_Selection.Start, 1)
+
+                        ' 버퍼 텍스트를 업데이트하고,
+                        UpdateBufferText()
+
+                        ' 캐럿을 표시되도록 한다.
+                        EnsureCaretVisible()
+
+                    End If
+
+                End If
+
+            End If
+
+            ' 스크롤 텍스트를 업데이트한다.
+            UpdateScrollText()
 
         End Sub
 

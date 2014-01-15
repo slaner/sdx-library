@@ -364,17 +364,13 @@ SDXLibrary
 	<summary>
  선택 영역의 정보를 저장합니다.
  </summary>
-</member><member name="F:SDXLib.Controls.SDXTextBox.m_Buffer">
-	<summary>
- 텍스트박스의 내용을 저장합니다.
- </summary>
 </member><member name="F:SDXLib.Controls.SDXTextBox.g_CaretTick">
 	<summary>
  캐럿이 표시되는 시간을 저장합니다.
  </summary>
-</member><member name="F:SDXLib.Controls.SDXTextBox.m_CaretFadeStep">
+</member><member name="F:SDXLib.Controls.SDXTextBox.g_UseCaretFade">
 	<summary>
- 캐럿이 사라지는 값을 저장합니다.
+ 캐럿이 사라질 때 페이드 아웃 효과를 적용할 것인지의 여부를 저장합니다.
  </summary>
 </member><member name="F:SDXLib.Controls.SDXTextBox.g_InsertMode">
 	<summary>
@@ -384,37 +380,13 @@ SDXLibrary
 	<summary>
  선택 영역을 저장합니다.
  </summary>
-</member><member name="F:SDXLib.Controls.SDXTextBox.m_ScrollPoint">
+</member><member name="F:SDXLib.Controls.SDXTextBox.g_ReadOnly">
 	<summary>
- 스크롤 위치를 저장합니다.
+ 읽기 전용 여부를 저장합니다.
  </summary>
-</member><member name="F:SDXLib.Controls.SDXTextBox.m_BufferText">
+</member><member name="F:SDXLib.Controls.SDXTextBox.g_PasswordChar">
 	<summary>
- 텍스트를 저장합니다.
- </summary>
-</member><member name="F:SDXLib.Controls.SDXTextBox.m_PrevBuffer">
-	<summary>
- 이전 버퍼를 저장합니다.
- </summary>
-</member><member name="F:SDXLib.Controls.SDXTextBox.m_iMaxDisplayableCharacters">
-	<summary>
- 컨트롤 영역 내부에 최대로 표시할 수 있는 문자의 갯수를 저장합니다.
- </summary>
-</member><member name="F:SDXLib.Controls.SDXTextBox.m_bShifted">
-	<summary>
- 쉬프트키의 상태를 저장합니다.
- </summary>
-</member><member name="F:SDXLib.Controls.SDXTextBox.m_HideCaret">
-	<summary>
- 한글 입력 중 캐럿을 숨기기 위해 사용함
- </summary>
-</member><member name="F:SDXLib.Controls.SDXTextBox.m_CaretTick">
-	<summary>
- 캐럿 표시 토글을 위한 틱 카운트를 저장합니다.
- </summary>
-</member><member name="F:SDXLib.Controls.SDXTextBox.m_ShowCaret">
-	<summary>
- 캐럿을 표시할 것인지의 여부를 저장합니다.
+ 암호 문자를 저장합니다.
  </summary>
 </member><member name="T:SDXLib.Controls.SDXTextBox">
 	<summary>
@@ -641,17 +613,29 @@ SDXLibrary
 	<param name="FadeStep">페이드 효과의 길이를 입력합니다. (일반적으로, 60프레임인 경우에 1초는 60입니다)</param>
 	<param name="Preserve">페이드 효과가 끝난 후에 개체를 보존할 것인지의 여부를 입력합니다.</param>
 	<param name="ToggleFadeEffect">페이드 효과를 번갈아가며 적용할 것인지의 여부를 입력합니다.</param>
+</member><member name="M:SDXLib.Controls.SDXTextBox.ProcessDelete">
+	<summary>
+ DELETE 키에 대한 작업을 구현합니다.
+ </summary>
+</member><member name="M:SDXLib.Controls.SDXTextBox.GetCharPos(System.Int32)">
+	<summary>
+ 문자의 위치를 가져옵니다.
+ </summary>
+</member><member name="M:SDXLib.Controls.SDXTextBox.UpdateBufferText">
+	<summary>
+ 버퍼 텍스트를 업데이트합니다.
+ </summary>
+</member><member name="M:SDXLib.Controls.SDXTextBox.RemoveSafe(System.Text.StringBuilder,System.Int32,System.Int32)">
+	<summary>
+ 안전한 문자열 제거 함수입니다.
+ </summary>
 </member><member name="M:SDXLib.Controls.SDXTextBox.UpdateScrollText(System.Boolean)">
 	<summary>
  스크롤 텍스트를 업데이트합니다.
  </summary>
-</member><member name="M:SDXLib.Controls.SDXTextBox.MoveCaretEx(System.Int32,System.Int32,System.Int32)">
+</member><member name="M:SDXLib.Controls.SDXTextBox.MoveCaretEx(System.Int32,System.Int32,System.Boolean,System.Boolean)">
 	<summary>
  캐럿을 이동시킵니다.
- </summary>
-</member><member name="M:SDXLib.Controls.SDXTextBox.MoveCaret(System.Int32)">
-	<summary>
- 캐럿을 지정된 위치로 이동시킵니다.
  </summary>
 </member><member name="M:SDXLib.Controls.SDXTextBox.ApplyInput(System.Char)">
 	<summary>
@@ -672,6 +656,10 @@ SDXLibrary
 </member><member name="M:SDXLib.Controls.SDXTextBox.SetSelection(System.Int32,System.Int32)">
 	<summary>
  + 선택 영역을 설정합니다.
+ </summary>
+</member><member name="M:SDXLib.Controls.SDXTextBox.ProcessBackspace">
+	<summary>
+ + 백스페이스 키에 대한 작업을 구현합니다.
  </summary>
 </member><member name="M:SDXLib.Controls.SDXTextBox.PasteClipboardText">
 	<summary>
@@ -716,6 +704,10 @@ SDXLibrary
 </member><member name="P:SDXLib.Controls.SDXTextBox.ReadOnly">
 	<summary>
  컨트롤이 읽기 전용인지 나타내는 값을 가져오거나 설정합니다.
+ </summary>
+</member><member name="P:SDXLib.Controls.SDXTextBox.PasswordChar">
+	<summary>
+ 텍스트의 내용을 암호 문자로 표시할 때 암호 문자로 사용할 문자를 가져오거나 설정합니다.
  </summary>
 </member><member name="T:SDXLib.IGraphicsEffect">
 	<summary>
@@ -2210,37 +2202,13 @@ SDXLibrary
 	<summary>
  2차원(x, y) 좌표계를 나타냅니다.
  </summary>
-</member><member name="M:SDXLib.Controls.SDXTextBox.ProcessBackspace">
-	<summary>
- + 백스페이스 키에 대한 작업을 구현합니다.
- </summary>
-</member><member name="M:SDXLib.Controls.SDXTextBox.LeftArrowAction">
-	<summary>
- + 왼쪽 화살표 방향키에 대한 작업을 구현합니다.
- </summary>
-</member><member name="M:SDXLib.Controls.SDXTextBox.RightArrowAction">
-	<summary>
- + 오른쪽 화살표 방향키에 대한 작업을 구현합니다.
- </summary>
-</member><member name="M:SDXLib.Controls.SDXTextBox.HomeAction">
-	<summary>
- + Home 키에 대한 작업을 구현합니다.
- </summary>
-</member><member name="M:SDXLib.Controls.SDXTextBox.EndAction">
-	<summary>
- + End 키에 대한 작업을 구현합니다.
- </summary>
-</member><member name="M:SDXLib.Controls.SDXTextBox.DeleteAction">
-	<summary>
- + Delete 키에 대한 작업을 구현합니다.
- </summary>
-</member><member name="M:SDXLib.Controls.SDXTextBox.UpdateBufferText">
-	<summary>
- 버퍼 텍스트를 업데이트합니다.
- </summary>
 </member><member name="M:SDXLib.Controls.SDXTextBox.ProcessWmCharMsg(System.Windows.Forms.Message)">
 	<summary> 
  WM_CHAR 메세지를 처리합니다.
+ </summary>
+</member><member name="M:SDXLib.Controls.SDXTextBox.ProcessImeComposition(System.Windows.Forms.Message)">
+	<summary>
+ WM_IME_COMPOSITION 메세지를 처리합니다.
  </summary>
 </member><member name="M:SDXLib.Controls.SDXTextBox.ProcessWmKeyDownMsg(System.Windows.Forms.Message)">
 	<summary>

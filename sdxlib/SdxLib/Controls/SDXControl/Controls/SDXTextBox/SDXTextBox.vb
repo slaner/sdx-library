@@ -22,19 +22,14 @@ Namespace Controls
         End Structure
 
         ''' <summary>
-        ''' 텍스트박스의 내용을 저장합니다.
-        ''' </summary>
-        Private m_Buffer As New StringBuilder()
-
-        ''' <summary>
         ''' 캐럿이 표시되는 시간을 저장합니다.
         ''' </summary>
         Private g_CaretTick As Int32 = 30
 
         ''' <summary>
-        ''' 캐럿이 사라지는 값을 저장합니다.
+        ''' 캐럿이 사라질 때 페이드 아웃 효과를 적용할 것인지의 여부를 저장합니다.
         ''' </summary>
-        Private m_CaretFadeStep As Single = 90 / 30
+        Private g_UseCaretFade As Boolean = True
 
         ''' <summary>
         ''' 삽입 모드를 사용하고 있는지 여부를 저장합니다.
@@ -47,58 +42,36 @@ Namespace Controls
         Private g_Selection As SelectionInfo
 
         ''' <summary>
-        ''' 스크롤 위치를 저장합니다.
+        ''' 읽기 전용 여부를 저장합니다.
         ''' </summary>
-        Private m_ScrollPoint As Point
-
         Private g_ReadOnly As Boolean = False
 
-        Private m_bGoingLeft As Boolean = False
-
         ''' <summary>
-        ''' 텍스트를 저장합니다.
+        ''' 암호 문자를 저장합니다.
         ''' </summary>
+        Private g_PasswordChar As Char = Nothing
+
+
+
+
+
+
+
+        Private m_ScrollPoint As Point
+        Private m_CaretFadeStep As Single = 90 / 30
+        Private m_Buffer As New StringBuilder()
         Private m_BufferText As String = Nothing
-
-        ''' <summary>
-        ''' 이전 버퍼를 저장합니다.
-        ''' </summary>
         Private m_PrevBuffer As StringBuilder = Nothing
-
-        ''' <summary>
-        ''' 컨트롤 영역 내부에 최대로 표시할 수 있는 문자의 갯수를 저장합니다.
-        ''' </summary>
         Private m_iMaxDisplayableCharacters As Int32 = 0
-
         Private m_iCaretPosition As Int32 = 0
-        Private m_iLastCaretPosition As Int32 = 0
-        Private m_bComposingChar As Boolean = False
-
-        ''' <summary>
-        ''' 쉬프트키의 상태를 저장합니다.
-        ''' </summary>
         Private m_bShifted As Boolean = False
-
-        ''' <summary>
-        ''' 한글 입력 중 캐럿을 숨기기 위해 사용함
-        ''' </summary>
         Private m_HideCaret As Boolean = False
-
-        ''' <summary>
-        ''' 캐럿 표시 토글을 위한 틱 카운트를 저장합니다.
-        ''' </summary>
         Private m_CaretTick As Int32 = 0
-
-        ''' <summary>
-        ''' 캐럿을 표시할 것인지의 여부를 저장합니다.
-        ''' </summary>
         Private m_ShowCaret As Boolean = False
-
         Private m_iTextRange As Int32 = 0
-
         Private m_ScrollText As String = Nothing
-
-        Private m_bComposition As Boolean = False
+        Private m_bComposing As Boolean = False
+        Private m_bSelectLeft As Boolean = False
 
     End Class
 End Namespace

@@ -36,6 +36,7 @@ Module EntryPoint
             .Size = New Size(512, txtChat.FontHeight)
             .TextAlign = TextAlignment.VerticalCenter Or TextAlignment.Left
             .BackColor = Color.LightGray
+            .ReadOnly = False
         End With
 
         SDX.Components.Add(btnExit)
